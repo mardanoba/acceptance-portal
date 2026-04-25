@@ -42,8 +42,7 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
         const formData = new URLSearchParams();
         formData.append('file', dataURI);
         formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
-        formData.append('folder', 'acceptance-portal');
-
+    
         const response = await fetch(
           `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
           {
