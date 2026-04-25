@@ -8,6 +8,10 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 const app = express();
 
+process.on('unhandledRejection', (reason) => {
+  console.error('UNHANDLED REJECTION:', reason);
+});
+
 // Database connection
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -64,7 +68,10 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     console.log('Success! Link:', link);
     res.json({ success: true, link, token });
   } catch (err) {
-    console.error('FULL ERROR:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+    console.error('ERROR MESSAGE:', err.message);
+    console.error('ERROR CODE:', err.code);
+    console.error('ERROR STACK:', err.stack);
+    console.error('ERROR DETAIL:', err.detail);
     res.status(500).json({ error: err.message });
   }
 });
@@ -84,7 +91,9 @@ app.get('/api/employees/:token', async (req, res) => {
 
     res.json(result.rows[0]);
   } catch (err) {
-    console.error('FULL ERROR:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+    console.error('ERROR MESSAGE:', err.message);
+    console.error('ERROR CODE:', err.code);
+    console.error('ERROR STACK:', err.stack);
     res.status(500).json({ error: err.message });
   }
 });
