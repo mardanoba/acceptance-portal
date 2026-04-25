@@ -27,7 +27,6 @@ export default function WelcomePage() {
         <div style={styles.heroOverlay} />
         <img src="/images/packlane.jpg" alt="PackLane" style={styles.heroImg} />
         <div style={styles.heroContent}>
-          <div style={styles.heroBadge}>🎉 You've Been Accepted</div>
           <h1 style={styles.heroTitle}>Welcome to<br />PackLane Canada</h1>
           <p style={styles.heroSub}>
             Your official employee acceptance portal. Check your status and access your digital work ID.

@@ -10,7 +10,7 @@ export default function CongratulationsPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PackLane Packaging — Congratulations";
+    document.title = "PackLane Canada — Congratulations";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -19,67 +19,106 @@ export default function CongratulationsPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.container}>
-        <p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p>
-      </div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.main}><div style={styles.card}><p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p></div></div>
     </div>
   );
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.container}><p>Loading...</p></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.main}><div style={styles.card}><p>Loading...</p></div></div>
     </div>
   );
 
   return (
     <div style={styles.page}>
-      <div style={styles.container}>
-        {/* HEADER */}
-        <div style={styles.header}>
-          <img src="/images/packlane.jpg" alt="packlane Logo" style={styles.logo} />
-          <div>
-            <h1 style={styles.companyName}>PackLane Packaging</h1>
-            <p style={styles.tagline}>Employee Acceptance Portal</p>
+      {/* NAV */}
+      <div style={styles.navBar}>
+        <div style={styles.navInner}>
+          <div style={styles.navBrand}>
+            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
+            <span style={styles.navName}>PackLane Canada</span>
           </div>
+          <span style={styles.navTag}>Employee Acceptance Portal</span>
+        </div>
+      </div>
+
+      {/* HERO */}
+      <div style={styles.hero}>
+        <div style={styles.heroOverlay} />
+        <div style={styles.heroContent}>
+          <div style={styles.heroBadge}>🎉 Accepted Employee</div>
+          <h1 style={styles.heroTitle}>Congratulations,<br />{employee.full_name}!</h1>
+          <p style={styles.heroSub}>
+            You have officially been accepted to PackLane Canada. Welcome to the team!
+          </p>
+        </div>
+      </div>
+
+      {/* MAIN */}
+      <div style={styles.main}>
+        <div style={styles.card}>
+
+          {/* PHOTO */}
+          {employee.photo_url ? (
+            <img src={employee.photo_url} alt={employee.full_name} style={styles.photo} />
+          ) : (
+            <div style={styles.photoPlaceholder}>👤</div>
+          )}
+
+          <div style={styles.acceptedBadge}>✅ Officially Accepted</div>
+
+          {/* DETAILS */}
+          <div style={styles.detailBox}>
+            {[
+              { label: "Full Name", value: employee.full_name },
+              { label: "Passport ID", value: employee.passport_id },
+              { label: "Work ID", value: employee.work_id },
+              { label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
+            ].map((item, i) => (
+              <div key={i} style={styles.detailRow}>
+                <span style={styles.detailLabel}>{item.label}</span>
+                <span style={styles.detailValue}>{item.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <button
+            style={styles.button}
+            onMouseOver={e => {
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.boxShadow = "0 8px 30px rgba(11,60,93,0.4)";
+            }}
+            onMouseOut={e => {
+              e.target.style.transform = "translateY(0)";
+              e.target.style.boxShadow = "0 4px 15px rgba(11,60,93,0.3)";
+            }}
+            onClick={() => navigate(`/work-id/${token}`)}
+          >
+            View My Digital Work ID →
+          </button>
         </div>
 
-        <div style={styles.emoji}>🎉</div>
-        <h2 style={styles.title}>Congratulations, {employee.full_name}!</h2>
-        <h3 style={styles.subTitle}>You have been accepted to PackLane Packaging!</h3>
-
-        {employee.photo_url && (
-          <img src={employee.photo_url} alt={employee.full_name} style={styles.photo} />
-        )}
-
-        <div style={styles.detailBox}>
-          <div style={styles.detailRow}>
-            <span style={styles.label}>Full Name</span>
-            <span style={styles.value}>{employee.full_name}</span>
-          </div>
-          <div style={styles.detailRow}>
-            <span style={styles.label}>Passport ID</span>
-            <span style={styles.value}>{employee.passport_id}</span>
-          </div>
-          <div style={styles.detailRow}>
-            <span style={styles.label}>Work ID</span>
-            <span style={styles.value}>{employee.work_id}</span>
-          </div>
-          <div style={styles.detailRow}>
-            <span style={styles.label}>Member Since</span>
-            <span style={styles.value}>
-              {new Date(employee.created_at).toLocaleDateString()}
-            </span>
-          </div>
+        {/* BOTTOM CARDS */}
+        <div style={styles.bottomRow}>
+          {[
+            { icon: "🏢", title: "Great Workplace", text: "Join a team of passionate professionals" },
+            { icon: "📦", title: "Industry Leader", text: "World-class packaging solutions" },
+            { icon: "🚀", title: "Growth", text: "Endless opportunities to grow your career" },
+          ].map((item, i) => (
+            <div key={i} style={styles.bottomCard}>
+              <span style={styles.bottomIcon}>{item.icon}</span>
+              <strong style={styles.bottomTitle}>{item.title}</strong>
+              <span style={styles.bottomText}>{item.text}</span>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <button
-          style={styles.button}
-          onMouseOver={e => e.target.style.backgroundColor = "#1F618D"}
-          onMouseOut={e => e.target.style.backgroundColor = "#2980b9"}
-          onClick={() => navigate(`/work-id/${token}`)}
-        >
-          View My Digital Work ID →
-        </button>
+      {/* FOOTER */}
+      <div style={styles.footer}>
+        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
@@ -88,107 +127,214 @@ export default function CongratulationsPage() {
 const styles = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#FFF8E7",
+    backgroundColor: "#f0f6ff",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    margin: 0,
+    padding: 0,
     display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    padding: "30px 20px",
+    flexDirection: "column",
   },
-  container: {
-    width: "95%",
-    maxWidth: "650px",
-    backgroundColor: "#fff8e7",
-    padding: "36px",
-    borderRadius: "15px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-    textAlign: "center",
-    boxSizing: "border-box",
+  navBar: {
+    background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)",
+    padding: "0 24px",
+    boxShadow: "0 2px 12px rgba(11,60,93,0.3)",
   },
-  header: {
+  navInner: {
+    maxWidth: "1100px",
+    margin: "0 auto",
+    height: "68px",
     display: "flex",
     alignItems: "center",
-    gap: "16px",
-    marginBottom: "28px",
-    paddingBottom: "20px",
-    borderBottom: "2px solid #0B3C5D",
-    textAlign: "left",
+    justifyContent: "space-between",
   },
-  logo: {
-    width: "55px",
-    height: "55px",
+  navBrand: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+  },
+  navLogo: {
+    width: "42px",
+    height: "42px",
     objectFit: "contain",
     borderRadius: "8px",
     backgroundColor: "#fff",
-    padding: "4px",
-    border: "1px solid #ddd",
+    padding: "3px",
   },
-  companyName: {
-    margin: 0,
+  navName: {
+    color: "#fff",
+    fontWeight: "800",
     fontSize: "18px",
-    fontWeight: "700",
-    color: "#0B3C5D",
   },
-  tagline: {
-    margin: 0,
+  navTag: {
+    color: "rgba(255,255,255,0.7)",
     fontSize: "13px",
-    color: "#666",
   },
-  emoji: { fontSize: "64px", marginBottom: "16px" },
-  title: {
-    fontSize: "26px",
-    fontWeight: "700",
-    color: "#2C3E50",
-    marginBottom: "8px",
+  hero: {
+    position: "relative",
+    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    padding: "72px 24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
   },
-  subTitle: {
-    fontSize: "17px",
-    color: "#0B3C5D",
+  heroOverlay: {
+    position: "absolute",
+    top: "-50%",
+    right: "-10%",
+    width: "500px",
+    height: "500px",
+    borderRadius: "50%",
+    background: "rgba(255,255,255,0.05)",
+    pointerEvents: "none",
+  },
+  heroContent: {
+    textAlign: "center",
+    maxWidth: "650px",
+    position: "relative",
+    zIndex: 1,
+  },
+  heroBadge: {
+    display: "inline-block",
+    background: "rgba(255,255,255,0.15)",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255,255,255,0.3)",
+    color: "#fff",
+    padding: "8px 20px",
+    borderRadius: "999px",
+    fontSize: "14px",
     fontWeight: "600",
-    marginBottom: "24px",
+    marginBottom: "20px",
+  },
+  heroTitle: {
+    color: "#fff",
+    fontSize: "44px",
+    fontWeight: "800",
+    margin: "0 0 16px",
+    lineHeight: "1.2",
+  },
+  heroSub: {
+    color: "rgba(255,255,255,0.85)",
+    fontSize: "17px",
+    lineHeight: "1.7",
+    margin: 0,
+  },
+  main: {
+    flex: 1,
+    maxWidth: "700px",
+    width: "100%",
+    margin: "0 auto",
+    padding: "48px 24px",
+  },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: "24px",
+    padding: "48px",
+    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
+    border: "1px solid rgba(11,60,93,0.08)",
+    textAlign: "center",
+    marginBottom: "32px",
   },
   photo: {
-    width: "150px",
-    height: "150px",
+    width: "140px",
+    height: "140px",
     borderRadius: "50%",
     objectFit: "cover",
-    border: "4px solid #0B3C5D",
-    margin: "0 auto 24px",
+    border: "5px solid #0B3C5D",
+    margin: "0 auto 20px",
     display: "block",
+    boxShadow: "0 4px 20px rgba(11,60,93,0.2)",
+  },
+  photoPlaceholder: {
+    width: "140px",
+    height: "140px",
+    borderRadius: "50%",
+    backgroundColor: "#f0f6ff",
+    border: "5px solid #0B3C5D",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "52px",
+    margin: "0 auto 20px",
+  },
+  acceptedBadge: {
+    display: "inline-block",
+    background: "linear-gradient(135deg, #0B3C5D, #2980b9)",
+    color: "#fff",
+    padding: "8px 24px",
+    borderRadius: "999px",
+    fontWeight: "700",
+    fontSize: "14px",
+    marginBottom: "28px",
+    boxShadow: "0 4px 12px rgba(11,60,93,0.3)",
   },
   detailBox: {
-    backgroundColor: "#fff",
-    borderRadius: "10px",
-    border: "1px solid #ddd",
+    backgroundColor: "#f8faff",
+    borderRadius: "16px",
     overflow: "hidden",
     marginBottom: "28px",
+    border: "1px solid rgba(11,60,93,0.08)",
     textAlign: "left",
   },
   detailRow: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "14px 20px",
-    borderBottom: "1px solid #f0f0f0",
+    alignItems: "center",
+    padding: "16px 24px",
+    borderBottom: "1px solid rgba(11,60,93,0.06)",
   },
-  label: {
-    fontWeight: "600",
-    color: "#555",
-    fontSize: "14px",
+  detailLabel: {
+    fontWeight: "700",
+    color: "#0B3C5D",
+    fontSize: "13px",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
   },
-  value: {
-    color: "#2C3E50",
+  detailValue: {
+    color: "#2c3e50",
     fontWeight: "500",
-    fontSize: "14px",
+    fontSize: "15px",
   },
   button: {
-    padding: "13px 36px",
-    fontSize: "16px",
-    fontWeight: "600",
-    borderRadius: "8px",
+    width: "100%",
+    padding: "16px",
+    fontSize: "17px",
+    fontWeight: "700",
+    borderRadius: "12px",
     border: "none",
     cursor: "pointer",
-    backgroundColor: "#2980b9",
+    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
     color: "#fff",
     transition: "all 0.3s",
+    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
+  },
+  bottomRow: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "16px",
+  },
+  bottomCard: {
+    backgroundColor: "#fff",
+    borderRadius: "16px",
+    padding: "24px 16px",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    boxShadow: "0 2px 12px rgba(11,60,93,0.08)",
+    border: "1px solid rgba(11,60,93,0.06)",
+  },
+  bottomIcon: { fontSize: "28px" },
+  bottomTitle: { color: "#0B3C5D", fontSize: "15px" },
+  bottomText: { color: "#4a5568", fontSize: "13px", lineHeight: "1.5" },
+  footer: {
+    background: "#0B3C5D",
+    padding: "20px 24px",
+    textAlign: "center",
+  },
+  footerText: {
+    color: "rgba(255,255,255,0.6)",
+    fontSize: "13px",
+    margin: 0,
   },
 };
