@@ -10,7 +10,7 @@ export default function CongratulationsPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Emirates Food Industries — Congratulations";
+    document.title = "PackLane Packaging — Congratulations";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -36,16 +36,16 @@ export default function CongratulationsPage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/kraftheinz.webp" alt="EFI Logo" style={styles.logo} />
+          <img src="/images/packlane.webp" alt="packlane Logo" style={styles.logo} />
           <div>
-            <h1 style={styles.companyName}>Emirates Food Industries</h1>
+            <h1 style={styles.companyName}>PackLane Packaging</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
           </div>
         </div>
 
         <div style={styles.emoji}>🎉</div>
         <h2 style={styles.title}>Congratulations, {employee.full_name}!</h2>
-        <h3 style={styles.subTitle}>You have been accepted to Emirates Food Industries!</h3>
+        <h3 style={styles.subTitle}>You have been accepted to PackLane Packaging!</h3>
 
         {employee.photo_url && (
           <img src={employee.photo_url} alt={employee.full_name} style={styles.photo} />

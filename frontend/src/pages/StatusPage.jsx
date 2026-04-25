@@ -11,7 +11,7 @@ export default function StatusPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Emirates Food Industries — Check Status";
+    document.title = "PackLane Packaging — Check Status";
   }, []);
 
   const handleCheckStatus = async () => {
@@ -41,9 +41,9 @@ export default function StatusPage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/kraftheinz.webp" alt="EFI Logo" style={styles.logo} />
+          <img src="/images/packlane.webp" alt="packlane Logo" style={styles.logo} />
           <div>
-            <h1 style={styles.companyName}>Emirates Food Industries</h1>
+            <h1 style={styles.companyName}>PackLane Packaging</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
           </div>
         </div>

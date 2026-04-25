@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/kraftheinz.webp";
+import logo from "../assets/packlane.webp";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -10,7 +10,7 @@ export default function WorkIDPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Kraft Heinz— Digital ID";
+    document.title = "PackLane Packaging— Digital ID";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -34,9 +34,9 @@ export default function WorkIDPage() {
       <div style={styles.idCard}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src={logo} alt="EFI Logo" style={styles.logoStyle} />
+          <img src={logo} alt="packlane Logo" style={styles.logoStyle} />
           <div style={styles.headerText}>
-            <h2 style={{ margin: 0, fontSize: "18px" }}>Emirates Food Industries</h2>
+            <h2 style={{ margin: 0, fontSize: "18px" }}>PackLane Packaging</h2>
             <p style={{ margin: 0, fontSize: "13px", opacity: 0.85 }}>
               Official Employee Digital ID
             </p>
@@ -83,7 +83,7 @@ export default function WorkIDPage() {
 
         {/* FOOTER */}
         <div style={styles.footer}>
-          This card is the property of Emirates Food Industries. If found, please return to the company office.
+          This card is the property of PackLane Packaging. If found, please return to the company office.
         </div>
       </div>
 

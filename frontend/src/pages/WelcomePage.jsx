@@ -6,7 +6,7 @@ export default function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Kraft Heinz — Welcome";
+    document.title = "PackLane — Welcome";
   }, []);
 
   return (
@@ -14,60 +14,52 @@ export default function WelcomePage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/kraftheinz.webp" alt="EFI Logo" style={styles.logo} />
+          <img src="/images/packlane.webp" alt="packlaneLogo" style={styles.logo} />
           <div>
-            <h1 style={styles.companyName}>Emirates Food Industries</h1>
+            <h1 style={styles.companyName}>PackLane Canada</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
           </div>
         </div>
 
         {/* BANNER */}
-        <img src="/images/kraftheinz.webp" alt="Emirates Food" style={styles.banner} />
+        <img src="/images/packlane.webp" alt="packlane" style={styles.banner} />
 
-        <h2 style={styles.welcomeTitle}>Welcome to Emirates Food Industries</h2>
-        <p style={styles.text}>
-          This is your official employee acceptance portal. If you have received
-          an acceptance link from our HR team, you can check your status below.
-        </p>
+        <h2 style={styles.welcomeTitle}>Welcome to PackLane Canada </h2>
+        
 
         {/* ABOUT */}
         <div style={styles.section}>
           <h3 style={styles.subHeader}>About the Company</h3>
           <p style={styles.text}>
-            Emirates Food Industries (EFI) is one of the leading holding companies
-            operating in the food / dairy / agriculture industries in the UAE.
-            Headquartered in Abu Dhabi, EFI was established to support the Abu Dhabi
-            government's agricultural road map and food security program. EFI's key
-            subsidiaries include National Feed and Flour Production and Marketing Co.
-            (NFFPM), National Dairy Farms (NDF), Masaken Dairy Farms (MDF), National
-            Bags (NB), and HAYATNA — EFI's home-grown dairy brand produced 100% in the UAE.
+            
+
+Packlane is a custom packaging company based inCanada, founded in 2015. They offer a range of services for creating custom printed boxes, including mailers, shipping boxes, and product boxes, with options for various materials and sizes. Packlane provides a user-friendly online platform for ordering and designing packaging, allowing customers to visualize their designs in 3D and receive instant quotes. They have a strong reputation in the industry, working with numerous brands and offering low minimum order quantities and fast turnaround times.
           </p>
 
-          <img src="/images/kraftheinz2.webp" alt="Mission" style={styles.sectionImg} />
+          <img src="/images/packlane2.webp" alt="Mission" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Mission</h3>
           <p style={styles.text}>
             To develop and produce a diversified portfolio of agro-related products,
             technically lead the industry, continuously improve production, product quality,
             and increase clients' satisfaction through optimal utilization of the company's
-            resources, working closely with the Abu Dhabi Food Control Authority (ADFCA)
-            and Abu Dhabi Farmers' Center (ADFSC).
+            resources.
           </p>
 
-          <img src="/images/kraftheinz3.jpg" alt="Vision" style={styles.sectionImg} />
+          <img src="/images/packlane3.jpg" alt="Vision" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Vision</h3>
           <p style={styles.text}>
             To become a leading world class organization and strengthen our position as a
-            leading Middle Eastern company in the agrofood business, maintaining the highest
+            leading  company in the packaging business, maintaining the highest
             quality standards of our products and services that will ensure our valuable
             clients' satisfaction.
           </p>
         </div>
-
+<p style={styles.text}>
+          This is your official employee acceptance portal. If you have received
+          an acceptance link from our HR team, you can check your status below.
+        </p>
         {/* VIEW STATUS BOX */}
         <div style={styles.statusBox}>
-          <p style={styles.statusText}>
-            Have you received an acceptance notification from Emirates Food Industries?
-          </p>
           <button
             style={styles.button}
             onMouseOver={e => e.target.style.backgroundColor = "#1F618D"}
