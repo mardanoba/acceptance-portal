@@ -2,9 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
-const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -12,27 +11,14 @@ process.on('unhandledRejection', (reason) => {
   console.error('UNHANDLED REJECTION:', reason);
 });
 
-// Database connection
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL || '',
   ssl: process.env.DATABASE_URL && process.env.DATABASE_URL.includes('localhost')
     ? false
     : { rejectUnauthorized: false }
 });
 
-// Cloudinary config
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
-
-// Multer + Cloudinary storage
-const storage = new CloudinaryStorage({
-  cloudinary,
-  params: { folder: 'acceptance-portal', allowed_formats: ['jpg', 'jpeg', 'png'] }
-});
-const upload = multer({ storage });
+const upload = multer({ storage: multer.memoryStorage() });
 
 app.use(cors({ origin: '*' }));
 app.use(express.json());
@@ -42,19 +28,45 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
   console.log('ENV CHECK:', {
     db: process.env.DATABASE_URL ? 'SET' : 'MISSING',
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME ? 'SET' : 'MISSING',
-    cloud_key: process.env.CLOUDINARY_API_KEY ? 'SET' : 'MISSING',
-    cloud_secret: process.env.CLOUDINARY_API_SECRET ? 'SET' : 'MISSING',
+    preset: process.env.CLOUDINARY_UPLOAD_PRESET ? 'SET' : 'MISSING',
     frontend: process.env.FRONTEND_URL ? 'SET' : 'MISSING',
   });
   try {
-    console.log('--- New request ---');
-    console.log('Body:', req.body);
-    console.log('File:', req.file);
-
     const { passport_id, full_name, work_id } = req.body;
-    const photo_url = req.file ? req.file.path : null;
 
-    console.log('Inserting into DB:', { passport_id, full_name, work_id, photo_url });
+    // Upload photo to Cloudinary using unsigned upload
+    let photo_url = null;
+    if (req.file) {
+      try {
+        const base64Image = req.file.buffer.toString('base64');
+        const dataURI = `data:${req.file.mimetype};base64,${base64Image}`;
+
+        const formData = new URLSearchParams();
+        formData.append('file', dataURI);
+        formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
+        formData.append('folder', 'acceptance-portal');
+
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+          {
+            method: 'POST',
+            body: formData
+          }
+        );
+
+        const data = await response.json();
+        console.log('Cloudinary response:', JSON.stringify(data));
+
+        if (data.secure_url) {
+          photo_url = data.secure_url;
+          console.log('Photo uploaded:', photo_url);
+        } else {
+          console.error('Cloudinary upload failed:', JSON.stringify(data));
+        }
+      } catch (imgErr) {
+        console.error('Photo upload error:', imgErr.message);
+      }
+    }
 
     const result = await pool.query(
       `INSERT INTO employees (passport_id, full_name, photo_url, work_id)
@@ -69,9 +81,7 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     res.json({ success: true, link, token });
   } catch (err) {
     console.error('ERROR MESSAGE:', err.message);
-    console.error('ERROR CODE:', err.code);
     console.error('ERROR STACK:', err.stack);
-    console.error('ERROR DETAIL:', err.detail);
     res.status(500).json({ error: err.message });
   }
 });
@@ -92,8 +102,6 @@ app.get('/api/employees/:token', async (req, res) => {
     res.json(result.rows[0]);
   } catch (err) {
     console.error('ERROR MESSAGE:', err.message);
-    console.error('ERROR CODE:', err.code);
-    console.error('ERROR STACK:', err.stack);
     res.status(500).json({ error: err.message });
   }
 });
