@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const multer = require('multer');
-const fetch = require('node-fetch');
 
 const app = express();
 
@@ -34,7 +33,6 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
   try {
     const { passport_id, full_name, work_id } = req.body;
 
-    // Upload photo to Cloudinary using unsigned upload
     let photo_url = null;
     if (req.file) {
       try {
