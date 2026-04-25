@@ -35,7 +35,7 @@ app.use(express.json());
 
 // POST /api/employees — Admin creates employee
 app.post('/api/employees', upload.single('photo'), async (req, res) => {
-   console.log('ENV CHECK:', {
+  console.log('ENV CHECK:', {
     db: process.env.DATABASE_URL ? 'SET' : 'MISSING',
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME ? 'SET' : 'MISSING',
     cloud_key: process.env.CLOUDINARY_API_KEY ? 'SET' : 'MISSING',
@@ -43,7 +43,6 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     frontend: process.env.FRONTEND_URL ? 'SET' : 'MISSING',
   });
   try {
-    try {
     console.log('--- New request ---');
     console.log('Body:', req.body);
     console.log('File:', req.file);
@@ -68,7 +67,7 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     console.error('FULL ERROR:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
     res.status(500).json({ error: err.message });
   }
-}); // ← THIS WAS MISSING
+});
 
 // GET /api/employees/:token — User views their info
 app.get('/api/employees/:token', async (req, res) => {
