@@ -36,7 +36,7 @@ export default function WelcomePage() {
 Packlane is a custom packaging company based inCanada, founded in 2015. They offer a range of services for creating custom printed boxes, including mailers, shipping boxes, and product boxes, with options for various materials and sizes. Packlane provides a user-friendly online platform for ordering and designing packaging, allowing customers to visualize their designs in 3D and receive instant quotes. They have a strong reputation in the industry, working with numerous brands and offering low minimum order quantities and fast turnaround times.
           </p>
 
-          <img src="/images/packlane2.webp" alt="Mission" style={styles.sectionImg} />
+          <img src="/images/packlane2.png" alt="Mission" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Mission</h3>
           <p style={styles.text}>
             To develop and produce a diversified portfolio of agro-related products,
