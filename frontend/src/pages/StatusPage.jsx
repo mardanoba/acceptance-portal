@@ -62,7 +62,7 @@ export default function StatusPage() {
       {/* FORM */}
       <div style={styles.main}>
         <div style={styles.formCard}>
-          <div style={styles.formIcon}>🪪</div>
+          <div style={styles.formIcon}>🗝</div>
           <h2 style={styles.formTitle}>Verify Your Identity</h2>
           <p style={styles.formText}>
             Please enter the Passport ID you provided during your application.
