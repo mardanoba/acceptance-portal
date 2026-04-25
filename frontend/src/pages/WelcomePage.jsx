@@ -6,7 +6,7 @@ export default function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Emirates Food Industries — Welcome";
+    document.title = "Kraft Heinz — Welcome";
   }, []);
 
   return (
@@ -14,7 +14,7 @@ export default function WelcomePage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/emiratesfood.webp" alt="EFI Logo" style={styles.logo} />
+          <img src="/images/kraftheinz.webp" alt="EFI Logo" style={styles.logo} />
           <div>
             <h1 style={styles.companyName}>Emirates Food Industries</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
@@ -22,7 +22,7 @@ export default function WelcomePage() {
         </div>
 
         {/* BANNER */}
-        <img src="/images/emiratesfood.webp" alt="Emirates Food" style={styles.banner} />
+        <img src="/images/kraftheinz.webp" alt="Emirates Food" style={styles.banner} />
 
         <h2 style={styles.welcomeTitle}>Welcome to Emirates Food Industries</h2>
         <p style={styles.text}>
@@ -43,7 +43,7 @@ export default function WelcomePage() {
             Bags (NB), and HAYATNA — EFI's home-grown dairy brand produced 100% in the UAE.
           </p>
 
-          <img src="/images/emiratesfood1.png" alt="Mission" style={styles.sectionImg} />
+          <img src="/images/kraftheinz2.webp" alt="Mission" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Mission</h3>
           <p style={styles.text}>
             To develop and produce a diversified portfolio of agro-related products,
@@ -53,7 +53,7 @@ export default function WelcomePage() {
             and Abu Dhabi Farmers' Center (ADFSC).
           </p>
 
-          <img src="/images/emiratesfood2.jpg" alt="Vision" style={styles.sectionImg} />
+          <img src="/images/kraftheinz3.jpg" alt="Vision" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Vision</h3>
           <p style={styles.text}>
             To become a leading world class organization and strengthen our position as a

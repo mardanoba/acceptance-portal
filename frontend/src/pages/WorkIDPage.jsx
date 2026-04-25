@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/emiratesfood.webp";
+import logo from "../assets/kraftheinz.webp";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -10,7 +10,7 @@ export default function WorkIDPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Emirates Food Industries — Digital ID";
+    document.title = "Kraft Heinz— Digital ID";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
