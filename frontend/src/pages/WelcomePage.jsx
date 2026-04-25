@@ -14,7 +14,7 @@ export default function WelcomePage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/packlane.webp" alt="packlaneLogo" style={styles.logo} />
+          <img src="/images/packlane.jpg" alt="packlaneLogo" style={styles.logo} />
           <div>
             <h1 style={styles.companyName}>PackLane Canada</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
@@ -22,7 +22,7 @@ export default function WelcomePage() {
         </div>
 
         {/* BANNER */}
-        <img src="/images/packlane.webp" alt="packlane" style={styles.banner} />
+        <img src="/images/packlane.jpg" alt="packlane" style={styles.banner} />
 
         <h2 style={styles.welcomeTitle}>Welcome to PackLane Canada </h2>
         

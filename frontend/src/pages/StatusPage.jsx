@@ -41,7 +41,7 @@ export default function StatusPage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/packlane.webp" alt="packlane Logo" style={styles.logo} />
+          <img src="/images/packlane.jpg" alt="packlane Logo" style={styles.logo} />
           <div>
             <h1 style={styles.companyName}>PackLane Packaging</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>

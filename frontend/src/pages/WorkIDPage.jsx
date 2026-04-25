@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/packlane.webp";
+import logo from "../assets/packlane.jpg";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
