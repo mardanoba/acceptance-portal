@@ -1,4 +1,4 @@
-require('dotenv').config(); // ← must be FIRST line
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
@@ -6,14 +6,16 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-
 const app = express();
 
 // Database connection
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL.includes('localhost') ? false : { rejectUnauthorized: false }
+  ssl: process.env.DATABASE_URL && process.env.DATABASE_URL.includes('localhost')
+    ? false
+    : { rejectUnauthorized: false }
 });
+
 // Cloudinary config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -28,7 +30,7 @@ const storage = new CloudinaryStorage({
 });
 const upload = multer({ storage });
 
-app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 // POST /api/employees — Admin creates employee
@@ -55,10 +57,10 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     console.log('Success! Link:', link);
     res.json({ success: true, link, token });
   } catch (err) {
-    console.error('FULL ERROR:', err); // <-- this will now print everything
+    console.error('FULL ERROR:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
     res.status(500).json({ error: err.message });
   }
-});
+}); // ← THIS WAS MISSING
 
 // GET /api/employees/:token — User views their info
 app.get('/api/employees/:token', async (req, res) => {
@@ -75,8 +77,8 @@ app.get('/api/employees/:token', async (req, res) => {
 
     res.json(result.rows[0]);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    console.error('FULL ERROR:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+    res.status(500).json({ error: err.message });
   }
 });
 
