@@ -36,7 +36,7 @@ export default function CongratulationsPage() {
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/emiratesfood.webp" alt="EFI Logo" style={styles.logo} />
+          <img src="/images/kraftheinz.webp" alt="EFI Logo" style={styles.logo} />
           <div>
             <h1 style={styles.companyName}>Emirates Food Industries</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
