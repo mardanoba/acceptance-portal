@@ -1,13 +1,40 @@
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
+const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export default function StatusPage() {
   const { token } = useParams();
   const navigate = useNavigate();
+  const [passportId, setPassportId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Emirates Food Industries — Status";
+    document.title = "Emirates Food Industries — Check Status";
   }, []);
+
+  const handleCheckStatus = async () => {
+    if (!passportId.trim()) return setError("Please enter your Passport ID.");
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(`${API}/api/employees/${token}`);
+      if (!res.ok) throw new Error("Not found");
+      const employee = await res.json();
+
+      if (employee.passport_id !== passportId.trim()) {
+        setError("Passport ID does not match. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      navigate(`/congratulations/${token}`);
+    } catch (err) {
+      setError("Could not verify your details. Please check your link and Passport ID.");
+    }
+    setLoading(false);
+  };
 
   return (
     <div style={styles.page}>
@@ -21,32 +48,42 @@ export default function StatusPage() {
           </div>
         </div>
 
-        {/* STATUS BADGE */}
-        <div style={styles.badgeWrap}>
-          <span style={styles.badge}>✅ Accepted</span>
-        </div>
-
-        <h2 style={styles.title}>Your Application Status</h2>
+        <div style={styles.iconWrap}>🔍</div>
+        <h2 style={styles.title}>Check Your Status</h2>
         <p style={styles.text}>
-          Congratulations! Your application has been reviewed and approved by the
-          Emirates Food Industries HR team. You are officially a member of our family.
+          Please enter your Passport ID below to verify your identity and
+          view your acceptance status.
         </p>
 
-        <div style={styles.infoBox}>
-          <p style={styles.infoText}>
-            🎉 You have been accepted to <strong>Emirates Food Industries</strong>.
-            Your digital work ID has been prepared and is ready to view.
-          </p>
+        <div style={styles.formBox}>
+          <label style={styles.label}>Passport ID</label>
+          <input
+            type="text"
+            placeholder="Enter your Passport ID"
+            value={passportId}
+            onChange={e => setPassportId(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleCheckStatus()}
+            onFocus={e => {
+              e.target.style.borderColor = "#1F618D";
+              e.target.style.boxShadow = "0 0 8px rgba(31,97,141,0.4)";
+            }}
+            onBlur={e => {
+              e.target.style.borderColor = "#2C3E50";
+              e.target.style.boxShadow = "none";
+            }}
+            style={styles.input}
+          />
+          {error && <p style={styles.error}>{error}</p>}
+          <button
+            onClick={handleCheckStatus}
+            disabled={loading}
+            style={styles.button}
+            onMouseOver={e => e.target.style.backgroundColor = "#1F618D"}
+            onMouseOut={e => e.target.style.backgroundColor = "#2980b9"}
+          >
+            {loading ? "Checking..." : "Check Status →"}
+          </button>
         </div>
-
-        <button
-          style={styles.button}
-          onMouseOver={e => e.target.style.backgroundColor = "#1F618D"}
-          onMouseOut={e => e.target.style.backgroundColor = "#2980b9"}
-          onClick={() => navigate(`/congratulations/${token}`)}
-        >
-          Continue to Congratulations →
-        </button>
       </div>
     </div>
   );
@@ -64,7 +101,7 @@ const styles = {
   },
   container: {
     width: "95%",
-    maxWidth: "650px",
+    maxWidth: "520px",
     backgroundColor: "#fff8e7",
     padding: "36px",
     borderRadius: "15px",
@@ -101,44 +138,57 @@ const styles = {
     fontSize: "13px",
     color: "#666",
   },
-  badgeWrap: {
-    marginBottom: "20px",
-  },
-  badge: {
-    display: "inline-block",
-    backgroundColor: "#dcfce7",
-    color: "#15803d",
-    padding: "8px 24px",
-    borderRadius: "999px",
-    fontWeight: "700",
-    fontSize: "15px",
+  iconWrap: {
+    fontSize: "52px",
+    marginBottom: "12px",
   },
   title: {
-    fontSize: "26px",
+    fontSize: "24px",
     fontWeight: "700",
     color: "#2C3E50",
-    marginBottom: "16px",
+    marginBottom: "12px",
   },
   text: {
     fontSize: "15px",
     color: "#34495e",
-    lineHeight: "1.8",
+    lineHeight: "1.7",
     marginBottom: "24px",
   },
-  infoBox: {
-    backgroundColor: "#0B3C5D",
+  formBox: {
+    backgroundColor: "#fff",
     borderRadius: "10px",
-    padding: "20px",
-    marginBottom: "28px",
+    padding: "24px",
+    border: "1px solid #ddd",
+    textAlign: "left",
   },
-  infoText: {
-    color: "#fff",
+  label: {
+    display: "block",
+    fontWeight: "600",
+    fontSize: "14px",
+    color: "#2C3E50",
+    marginBottom: "8px",
+  },
+  input: {
+    width: "100%",
+    padding: "12px 14px",
     fontSize: "15px",
-    lineHeight: "1.7",
-    margin: 0,
+    borderRadius: "8px",
+    border: "1px solid #2C3E50",
+    outline: "none",
+    marginBottom: "16px",
+    transition: "0.3s border, 0.3s box-shadow",
+    boxSizing: "border-box",
+  },
+  error: {
+    color: "#c0392b",
+    fontWeight: "600",
+    fontSize: "14px",
+    marginBottom: "12px",
+    marginTop: "-8px",
   },
   button: {
-    padding: "13px 36px",
+    width: "100%",
+    padding: "13px",
     fontSize: "16px",
     fontWeight: "600",
     borderRadius: "8px",

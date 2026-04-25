@@ -14,7 +14,7 @@ export default function CongratulationsPage() {
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
-      .catch(() => setError("Could not load your details. Please check your link."));
+      .catch(() => setError("Could not load your details."));
   }, [token]);
 
   if (error) return (
@@ -27,9 +27,7 @@ export default function CongratulationsPage() {
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.container}>
-        <p>Loading your details...</p>
-      </div>
+      <div style={styles.container}><p>Loading...</p></div>
     </div>
   );
 
@@ -45,17 +43,14 @@ export default function CongratulationsPage() {
           </div>
         </div>
 
-        {/* CONGRATS */}
-        <div style={styles.confettiBox}>🎉</div>
+        <div style={styles.emoji}>🎉</div>
         <h2 style={styles.title}>Congratulations, {employee.full_name}!</h2>
         <h3 style={styles.subTitle}>You have been accepted to Emirates Food Industries!</h3>
 
-        {/* PHOTO */}
         {employee.photo_url && (
           <img src={employee.photo_url} alt={employee.full_name} style={styles.photo} />
         )}
 
-        {/* DETAILS */}
         <div style={styles.detailBox}>
           <div style={styles.detailRow}>
             <span style={styles.label}>Full Name</span>
@@ -71,7 +66,9 @@ export default function CongratulationsPage() {
           </div>
           <div style={styles.detailRow}>
             <span style={styles.label}>Member Since</span>
-            <span style={styles.value}>{new Date(employee.created_at).toLocaleDateString()}</span>
+            <span style={styles.value}>
+              {new Date(employee.created_at).toLocaleDateString()}
+            </span>
           </div>
         </div>
 
@@ -137,10 +134,7 @@ const styles = {
     fontSize: "13px",
     color: "#666",
   },
-  confettiBox: {
-    fontSize: "64px",
-    marginBottom: "16px",
-  },
+  emoji: { fontSize: "64px", marginBottom: "16px" },
   title: {
     fontSize: "26px",
     fontWeight: "700",
@@ -148,7 +142,7 @@ const styles = {
     marginBottom: "8px",
   },
   subTitle: {
-    fontSize: "18px",
+    fontSize: "17px",
     color: "#0B3C5D",
     fontWeight: "600",
     marginBottom: "24px",

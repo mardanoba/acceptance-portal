@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function WelcomePage() {
   const { token } = useParams();
@@ -9,20 +9,12 @@ export default function WelcomePage() {
     document.title = "Emirates Food Industries — Welcome";
   }, []);
 
-  const imageStyle = {
-    width: "100%",
-    borderRadius: "10px",
-    marginBottom: "20px",
-    height: "auto",
-    objectFit: "cover",
-  };
-
   return (
     <div style={styles.page}>
       <div style={styles.container}>
         {/* HEADER */}
         <div style={styles.header}>
-          <img src="/images/emiratesfood.webp" alt="Emirates Food Industries" style={styles.logo} />
+          <img src="/images/emiratesfood.webp" alt="EFI Logo" style={styles.logo} />
           <div>
             <h1 style={styles.companyName}>Emirates Food Industries</h1>
             <p style={styles.tagline}>Employee Acceptance Portal</p>
@@ -30,47 +22,52 @@ export default function WelcomePage() {
         </div>
 
         {/* BANNER */}
-        <img src="/images/emiratesfood.webp" alt="Emirates Food" style={imageStyle} />
+        <img src="/images/emiratesfood.webp" alt="Emirates Food" style={styles.banner} />
 
         <h2 style={styles.welcomeTitle}>Welcome to Emirates Food Industries</h2>
         <p style={styles.text}>
-          This is your official acceptance portal. If you have received an acceptance link,
-          you can view your status and digital work ID below.
+          This is your official employee acceptance portal. If you have received
+          an acceptance link from our HR team, you can check your status below.
         </p>
 
         {/* ABOUT */}
         <div style={styles.section}>
           <h3 style={styles.subHeader}>About the Company</h3>
           <p style={styles.text}>
-            Emirates Food Industries (EFI) is one of the leading holding companies operating
-            in the food / dairy / agriculture industries in the UAE. Headquartered in Abu Dhabi,
-            EFI was established to support the Abu Dhabi government's agricultural road map and
-            food security program. EFI's key subsidiaries include National Feed and Flour
-            Production and Marketing Co. (NFFPM), National Dairy Farms (NDF), Masaken Dairy
-            Farms (MDF), National Bags (NB), and HAYATNA — EFI's home-grown dairy brand
-            produced 100% in the UAE.
+            Emirates Food Industries (EFI) is one of the leading holding companies
+            operating in the food / dairy / agriculture industries in the UAE.
+            Headquartered in Abu Dhabi, EFI was established to support the Abu Dhabi
+            government's agricultural road map and food security program. EFI's key
+            subsidiaries include National Feed and Flour Production and Marketing Co.
+            (NFFPM), National Dairy Farms (NDF), Masaken Dairy Farms (MDF), National
+            Bags (NB), and HAYATNA — EFI's home-grown dairy brand produced 100% in the UAE.
           </p>
 
-          <img src="/images/emiratesfood1.png" alt="Mission" style={imageStyle} />
+          <img src="/images/emiratesfood1.png" alt="Mission" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Mission</h3>
           <p style={styles.text}>
-            To develop and produce a diversified portfolio of agro-related products, technically
-            lead the industry, continuously improve production, product quality, and increase
-            clients' satisfaction through optimal utilization of the company's resources.
+            To develop and produce a diversified portfolio of agro-related products,
+            technically lead the industry, continuously improve production, product quality,
+            and increase clients' satisfaction through optimal utilization of the company's
+            resources, working closely with the Abu Dhabi Food Control Authority (ADFCA)
+            and Abu Dhabi Farmers' Center (ADFSC).
           </p>
 
-          <img src="/images/emiratesfood2.jpg" alt="Vision" style={imageStyle} />
+          <img src="/images/emiratesfood2.jpg" alt="Vision" style={styles.sectionImg} />
           <h3 style={styles.subHeader}>Vision</h3>
           <p style={styles.text}>
-            To become a leading world class organization and strengthen our position as a leading
-            Middle Eastern company in the agrofood business, maintaining the highest quality
-            standards of our products and services.
+            To become a leading world class organization and strengthen our position as a
+            leading Middle Eastern company in the agrofood business, maintaining the highest
+            quality standards of our products and services that will ensure our valuable
+            clients' satisfaction.
           </p>
         </div>
 
-        {/* VIEW STATUS BUTTON */}
+        {/* VIEW STATUS BOX */}
         <div style={styles.statusBox}>
-          <p style={styles.statusText}>Have you received an acceptance link?</p>
+          <p style={styles.statusText}>
+            Have you received an acceptance notification from Emirates Food Industries?
+          </p>
           <button
             style={styles.button}
             onMouseOver={e => e.target.style.backgroundColor = "#1F618D"}
@@ -132,6 +129,13 @@ const styles = {
     fontSize: "13px",
     color: "#666",
   },
+  banner: {
+    width: "100%",
+    borderRadius: "10px",
+    marginBottom: "20px",
+    height: "auto",
+    objectFit: "cover",
+  },
   welcomeTitle: {
     fontSize: "26px",
     fontWeight: "700",
@@ -149,6 +153,13 @@ const styles = {
     textAlign: "left",
     margin: "24px 0",
   },
+  sectionImg: {
+    width: "100%",
+    borderRadius: "10px",
+    marginBottom: "16px",
+    height: "auto",
+    objectFit: "cover",
+  },
   subHeader: {
     color: "#0B3C5D",
     marginBottom: "8px",
@@ -158,17 +169,18 @@ const styles = {
   statusBox: {
     backgroundColor: "#0B3C5D",
     borderRadius: "12px",
-    padding: "24px",
+    padding: "28px",
     textAlign: "center",
     marginTop: "20px",
   },
   statusText: {
     color: "#fff",
     fontSize: "16px",
-    marginBottom: "14px",
+    marginBottom: "16px",
+    lineHeight: "1.6",
   },
   button: {
-    padding: "12px 32px",
+    padding: "13px 36px",
     fontSize: "16px",
     fontWeight: "600",
     borderRadius: "8px",
