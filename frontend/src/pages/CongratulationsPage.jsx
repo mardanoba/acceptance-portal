@@ -51,7 +51,7 @@ export default function CongratulationsPage() {
           <div style={styles.heroBadge}>🎉 Accepted Employee</div>
           <h1 style={styles.heroTitle}>Congratulations,<br />{employee.full_name}!</h1>
           <p style={styles.heroSub}>
-            You have officially been accepted to PackLane Canada. Welcome to the team!
+            You have officially been accepted to PackLane Canada. You have now completed 50% of your application process Welcome to the team!
           </p>
         </div>
       </div>
