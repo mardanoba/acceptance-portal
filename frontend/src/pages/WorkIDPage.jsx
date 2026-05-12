@@ -91,9 +91,10 @@ export default function WorkIDPage() {
             <div style={styles.details}>
               {[
                 { label: "Full Name", value: employee.full_name },
-                { label: "Passport ID", value: employee.passport_id },
-                { label: "Work ID", value: employee.work_id },
-                { label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
+{ label: "Passport ID", value: employee.passport_id },
+{ label: "Work ID", value: employee.work_id },
+{ label: "Work Type", value: employee.work_type },
+{ label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
               ].map((item, i) => (
                 <div key={i} style={styles.detailItem}>
                   <span style={styles.detailLabel}>{item.label}</span>

@@ -72,10 +72,11 @@ export default function CongratulationsPage() {
           {/* DETAILS */}
           <div style={styles.detailBox}>
             {[
-              { label: "Full Name", value: employee.full_name },
-              { label: "Passport ID", value: employee.passport_id },
-              { label: "Work ID", value: employee.work_id },
-              { label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
+             { label: "Full Name", value: employee.full_name },
+{ label: "Passport ID", value: employee.passport_id },
+{ label: "Work ID", value: employee.work_id },
+{ label: "Work Type", value: employee.work_type },
+{ label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
             ].map((item, i) => (
               <div key={i} style={styles.detailRow}>
                 <span style={styles.detailLabel}>{item.label}</span>

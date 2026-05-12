@@ -5,7 +5,7 @@ import logo from '../assets/packlane.jpg';
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export default function AdminPage() {
-  const [form, setForm] = useState({ passport_id: '', full_name: '', work_id: '' });
+  const [form, setForm] = useState({ passport_id: '', full_name: '', work_id: '', work_type: '' });
   const [photo, setPhoto] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [generatedLink, setGeneratedLink] = useState('');
@@ -32,6 +32,7 @@ export default function AdminPage() {
       data.append('passport_id', form.passport_id);
       data.append('full_name', form.full_name);
       data.append('work_id', form.work_id);
+      data.append('work_type', form.work_type);
       if (photo) data.append('photo', photo);
       const res = await axios.post(`${API}/api/employees`, data);
       setGeneratedLink(res.data.link);
@@ -129,6 +130,20 @@ export default function AdminPage() {
                 />
               </div>
 
+              {/* WORK TYPE */}
+              <div style={styles.inputGroup}>
+                <label style={styles.label}>Work Type</label>
+                <input
+                  style={styles.input}
+                  placeholder="e.g. Engineer, Manager, Driver"
+                  value={form.work_type}
+                  onChange={e => setForm({ ...form, work_type: e.target.value })}
+                  onFocus={e => { e.target.style.borderColor = "#2980b9"; e.target.style.boxShadow = "0 0 0 3px rgba(41,128,185,0.15)"; }}
+                  onBlur={e => { e.target.style.borderColor = "#ddd"; e.target.style.boxShadow = "none"; }}
+                  required
+                />
+              </div>
+
               {/* PHOTO */}
               <div style={styles.inputGroup}>
                 <label style={styles.label}>Employee Photo</label>
@@ -151,11 +166,7 @@ export default function AdminPage() {
                 {photo && <p style={styles.fileName}>✅ {photo.name}</p>}
               </div>
 
-              {error && (
-                <div style={styles.errorBox}>
-                  ⚠️ {error}
-                </div>
-              )}
+              {error && <div style={styles.errorBox}>⚠️ {error}</div>}
 
               <button
                 type="submit"
@@ -175,7 +186,6 @@ export default function AdminPage() {
 
           {/* RIGHT SIDE */}
           <div style={styles.rightCol}>
-            {/* GENERATED LINK */}
             {generatedLink ? (
               <div style={styles.linkCard}>
                 <div style={styles.linkCardHeader}>
@@ -215,6 +225,7 @@ export default function AdminPage() {
                   "Enter the employee's full legal name",
                   "Enter their passport ID exactly as it appears",
                   "Assign a unique Work ID for this employee",
+                  "Enter their work type (e.g. Engineer, Driver)",
                   "Upload a clear passport-style photo",
                   "Copy the generated link and send it to the employee",
                   "The employee uses the link to access their digital ID",
@@ -239,372 +250,57 @@ export default function AdminPage() {
 }
 
 const styles = {
-  page: {
-    minHeight: "100vh",
-    backgroundColor: "#f0f6ff",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    margin: 0,
-    padding: 0,
-    display: "flex",
-    flexDirection: "column",
-  },
-  navBar: {
-    background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)",
-    padding: "0 24px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.3)",
-  },
-  navInner: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    height: "68px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  navBrand: {
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-  },
-  navLogo: {
-    width: "42px",
-    height: "42px",
-    objectFit: "contain",
-    borderRadius: "8px",
-    backgroundColor: "#fff",
-    padding: "3px",
-  },
-  navName: {
-    color: "#fff",
-    fontWeight: "800",
-    fontSize: "18px",
-  },
-  navTag: {
-    color: "rgba(255,255,255,0.7)",
-    fontSize: "13px",
-    fontWeight: "500",
-  },
-  hero: {
-    position: "relative",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
-    padding: "60px 24px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "hidden",
-  },
-  heroOverlay: {
-    position: "absolute",
-    top: "-50%",
-    right: "-10%",
-    width: "500px",
-    height: "500px",
-    borderRadius: "50%",
-    background: "rgba(255,255,255,0.05)",
-    pointerEvents: "none",
-  },
-  heroContent: {
-    textAlign: "center",
-    maxWidth: "600px",
-    position: "relative",
-    zIndex: 1,
-  },
-  heroBadge: {
-    display: "inline-block",
-    background: "rgba(255,255,255,0.15)",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(255,255,255,0.3)",
-    color: "#fff",
-    padding: "8px 20px",
-    borderRadius: "999px",
-    fontSize: "14px",
-    fontWeight: "600",
-    marginBottom: "16px",
-  },
-  heroTitle: {
-    color: "#fff",
-    fontSize: "44px",
-    fontWeight: "800",
-    margin: "0 0 12px",
-  },
-  heroSub: {
-    color: "rgba(255,255,255,0.85)",
-    fontSize: "16px",
-    margin: 0,
-    lineHeight: "1.7",
-  },
-  main: {
-    flex: 1,
-    maxWidth: "1100px",
-    width: "100%",
-    margin: "0 auto",
-    padding: "48px 24px",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "28px",
-    alignItems: "start",
-  },
-  formCard: {
-    backgroundColor: "#fff",
-    borderRadius: "24px",
-    padding: "36px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "1px solid rgba(11,60,93,0.08)",
-  },
-  formHeader: {
-    display: "flex",
-    alignItems: "center",
-    gap: "16px",
-    marginBottom: "28px",
-    paddingBottom: "20px",
-    borderBottom: "2px solid #f0f6ff",
-  },
-  formIcon: {
-    fontSize: "40px",
-  },
-  formTitle: {
-    margin: "0 0 4px",
-    fontSize: "20px",
-    fontWeight: "800",
-    color: "#0B3C5D",
-  },
-  formSub: {
-    margin: 0,
-    fontSize: "13px",
-    color: "#4a5568",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-  },
-  inputGroup: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-  },
-  label: {
-    fontWeight: "700",
-    fontSize: "12px",
-    color: "#0B3C5D",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
-  },
-  input: {
-    padding: "13px 16px",
-    borderRadius: "12px",
-    border: "2px solid #ddd",
-    fontSize: "15px",
-    outline: "none",
-    transition: "all 0.3s",
-    backgroundColor: "#f8faff",
-    color: "#0B3C5D",
-    boxSizing: "border-box",
-    width: "100%",
-  },
-  photoUploadBox: {
-    position: "relative",
-    border: "2px dashed #2980b9",
-    borderRadius: "12px",
-    overflow: "hidden",
-    cursor: "pointer",
-    backgroundColor: "#f8faff",
-    minHeight: "120px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  photoPreview: {
-    width: "100%",
-    height: "150px",
-    objectFit: "cover",
-  },
-  photoPlaceholder: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "8px",
-    padding: "24px",
-  },
-  photoPlaceholderText: {
-    color: "#2980b9",
-    fontSize: "14px",
-    fontWeight: "600",
-  },
-  fileInput: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    opacity: 0,
-    cursor: "pointer",
-  },
-  fileName: {
-    fontSize: "13px",
-    color: "#2980b9",
-    fontWeight: "600",
-    margin: "4px 0 0",
-  },
-  errorBox: {
-    backgroundColor: "#fff5f5",
-    border: "1px solid #fed7d7",
-    borderRadius: "10px",
-    padding: "12px 16px",
-    color: "#c0392b",
-    fontWeight: "600",
-    fontSize: "14px",
-  },
-  submitBtn: {
-    padding: "16px",
-    fontSize: "16px",
-    fontWeight: "700",
-    borderRadius: "12px",
-    border: "none",
-    cursor: "pointer",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
-    color: "#fff",
-    transition: "all 0.3s",
-    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
-    marginTop: "8px",
-  },
-  rightCol: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "24px",
-  },
-  linkCard: {
-    backgroundColor: "#fff",
-    borderRadius: "24px",
-    padding: "32px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "1px solid rgba(11,60,93,0.08)",
-  },
-  linkCardHeader: {
-    display: "flex",
-    alignItems: "center",
-    gap: "14px",
-    marginBottom: "20px",
-  },
-  linkCardIcon: {
-    fontSize: "36px",
-  },
-  linkCardTitle: {
-    margin: "0 0 4px",
-    fontSize: "18px",
-    fontWeight: "800",
-    color: "#0B3C5D",
-  },
-  linkCardSub: {
-    margin: 0,
-    fontSize: "13px",
-    color: "#4a5568",
-  },
-  linkBox: {
-    backgroundColor: "#f0f6ff",
-    border: "2px solid rgba(11,60,93,0.15)",
-    borderRadius: "12px",
-    padding: "16px",
-    marginBottom: "16px",
-  },
-  linkText: {
-    wordBreak: "break-all",
-    color: "#0B3C5D",
-    fontSize: "13px",
-    margin: 0,
-    lineHeight: "1.6",
-    fontWeight: "500",
-  },
-  copyBtn: {
-    width: "100%",
-    padding: "14px",
-    fontSize: "15px",
-    fontWeight: "700",
-    borderRadius: "12px",
-    border: "none",
-    cursor: "pointer",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
-    color: "#fff",
-    transition: "all 0.3s",
-    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
-  },
-  emptyCard: {
-    backgroundColor: "#fff",
-    borderRadius: "24px",
-    padding: "40px 32px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "2px dashed rgba(11,60,93,0.15)",
-    textAlign: "center",
-  },
-  emptyIcon: {
-    fontSize: "48px",
-    display: "block",
-    marginBottom: "16px",
-  },
-  emptyTitle: {
-    fontSize: "18px",
-    fontWeight: "800",
-    color: "#0B3C5D",
-    margin: "0 0 8px",
-  },
-  emptyText: {
-    fontSize: "14px",
-    color: "#4a5568",
-    lineHeight: "1.7",
-    margin: 0,
-  },
-  tipsCard: {
-    backgroundColor: "#fff",
-    borderRadius: "24px",
-    padding: "32px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "1px solid rgba(11,60,93,0.08)",
-  },
-  tipsTitle: {
-    fontSize: "17px",
-    fontWeight: "800",
-    color: "#0B3C5D",
-    margin: "0 0 20px",
-  },
-  tipsList: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "14px",
-  },
-  tipItem: {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "12px",
-  },
-  tipNum: {
-    width: "24px",
-    height: "24px",
-    borderRadius: "50%",
-    background: "linear-gradient(135deg, #0B3C5D, #2980b9)",
-    color: "#fff",
-    fontSize: "12px",
-    fontWeight: "700",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexShrink: 0,
-  },
-  tipText: {
-    fontSize: "14px",
-    color: "#4a5568",
-    lineHeight: "1.6",
-  },
-  footer: {
-    background: "#0B3C5D",
-    padding: "20px 24px",
-    textAlign: "center",
-    marginTop: "auto",
-  },
-  footerText: {
-    color: "rgba(255,255,255,0.6)",
-    fontSize: "13px",
-    margin: 0,
-  },
+  page: { minHeight: "100vh", backgroundColor: "#f0f6ff", fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", margin: 0, padding: 0, display: "flex", flexDirection: "column" },
+  navBar: { background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)", padding: "0 24px", boxShadow: "0 2px 12px rgba(11,60,93,0.3)" },
+  navInner: { maxWidth: "1100px", margin: "0 auto", height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between" },
+  navBrand: { display: "flex", alignItems: "center", gap: "12px" },
+  navLogo: { width: "42px", height: "42px", objectFit: "contain", borderRadius: "8px", backgroundColor: "#fff", padding: "3px" },
+  navName: { color: "#fff", fontWeight: "800", fontSize: "18px" },
+  navTag: { color: "rgba(255,255,255,0.7)", fontSize: "13px", fontWeight: "500" },
+  hero: { position: "relative", background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)", padding: "60px 24px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" },
+  heroOverlay: { position: "absolute", top: "-50%", right: "-10%", width: "500px", height: "500px", borderRadius: "50%", background: "rgba(255,255,255,0.05)", pointerEvents: "none" },
+  heroContent: { textAlign: "center", maxWidth: "600px", position: "relative", zIndex: 1 },
+  heroBadge: { display: "inline-block", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", padding: "8px 20px", borderRadius: "999px", fontSize: "14px", fontWeight: "600", marginBottom: "16px" },
+  heroTitle: { color: "#fff", fontSize: "44px", fontWeight: "800", margin: "0 0 12px" },
+  heroSub: { color: "rgba(255,255,255,0.85)", fontSize: "16px", margin: 0, lineHeight: "1.7" },
+  main: { flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "48px 24px" },
+  grid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", alignItems: "start" },
+  formCard: { backgroundColor: "#fff", borderRadius: "24px", padding: "36px", boxShadow: "0 8px 40px rgba(11,60,93,0.12)", border: "1px solid rgba(11,60,93,0.08)" },
+  formHeader: { display: "flex", alignItems: "center", gap: "16px", marginBottom: "28px", paddingBottom: "20px", borderBottom: "2px solid #f0f6ff" },
+  formIcon: { fontSize: "40px" },
+  formTitle: { margin: "0 0 4px", fontSize: "20px", fontWeight: "800", color: "#0B3C5D" },
+  formSub: { margin: 0, fontSize: "13px", color: "#4a5568" },
+  form: { display: "flex", flexDirection: "column", gap: "20px" },
+  inputGroup: { display: "flex", flexDirection: "column", gap: "8px" },
+  label: { fontWeight: "700", fontSize: "12px", color: "#0B3C5D", textTransform: "uppercase", letterSpacing: "0.5px" },
+  input: { padding: "13px 16px", borderRadius: "12px", border: "2px solid #ddd", fontSize: "15px", outline: "none", transition: "all 0.3s", backgroundColor: "#f8faff", color: "#0B3C5D", boxSizing: "border-box", width: "100%" },
+  photoUploadBox: { position: "relative", border: "2px dashed #2980b9", borderRadius: "12px", overflow: "hidden", cursor: "pointer", backgroundColor: "#f8faff", minHeight: "120px", display: "flex", alignItems: "center", justifyContent: "center" },
+  photoPreview: { width: "100%", height: "150px", objectFit: "cover" },
+  photoPlaceholder: { display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", padding: "24px" },
+  photoPlaceholderText: { color: "#2980b9", fontSize: "14px", fontWeight: "600" },
+  fileInput: { position: "absolute", top: 0, left: 0, width: "100%", height: "100%", opacity: 0, cursor: "pointer" },
+  fileName: { fontSize: "13px", color: "#2980b9", fontWeight: "600", margin: "4px 0 0" },
+  errorBox: { backgroundColor: "#fff5f5", border: "1px solid #fed7d7", borderRadius: "10px", padding: "12px 16px", color: "#c0392b", fontWeight: "600", fontSize: "14px" },
+  submitBtn: { padding: "16px", fontSize: "16px", fontWeight: "700", borderRadius: "12px", border: "none", cursor: "pointer", background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)", color: "#fff", transition: "all 0.3s", boxShadow: "0 4px 15px rgba(11,60,93,0.3)", marginTop: "8px" },
+  rightCol: { display: "flex", flexDirection: "column", gap: "24px" },
+  linkCard: { backgroundColor: "#fff", borderRadius: "24px", padding: "32px", boxShadow: "0 8px 40px rgba(11,60,93,0.12)", border: "1px solid rgba(11,60,93,0.08)" },
+  linkCardHeader: { display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" },
+  linkCardIcon: { fontSize: "36px" },
+  linkCardTitle: { margin: "0 0 4px", fontSize: "18px", fontWeight: "800", color: "#0B3C5D" },
+  linkCardSub: { margin: 0, fontSize: "13px", color: "#4a5568" },
+  linkBox: { backgroundColor: "#f0f6ff", border: "2px solid rgba(11,60,93,0.15)", borderRadius: "12px", padding: "16px", marginBottom: "16px" },
+  linkText: { wordBreak: "break-all", color: "#0B3C5D", fontSize: "13px", margin: 0, lineHeight: "1.6", fontWeight: "500" },
+  copyBtn: { width: "100%", padding: "14px", fontSize: "15px", fontWeight: "700", borderRadius: "12px", border: "none", cursor: "pointer", background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)", color: "#fff", transition: "all 0.3s", boxShadow: "0 4px 15px rgba(11,60,93,0.3)" },
+  emptyCard: { backgroundColor: "#fff", borderRadius: "24px", padding: "40px 32px", boxShadow: "0 8px 40px rgba(11,60,93,0.12)", border: "2px dashed rgba(11,60,93,0.15)", textAlign: "center" },
+  emptyIcon: { fontSize: "48px", display: "block", marginBottom: "16px" },
+  emptyTitle: { fontSize: "18px", fontWeight: "800", color: "#0B3C5D", margin: "0 0 8px" },
+  emptyText: { fontSize: "14px", color: "#4a5568", lineHeight: "1.7", margin: 0 },
+  tipsCard: { backgroundColor: "#fff", borderRadius: "24px", padding: "32px", boxShadow: "0 8px 40px rgba(11,60,93,0.12)", border: "1px solid rgba(11,60,93,0.08)" },
+  tipsTitle: { fontSize: "17px", fontWeight: "800", color: "#0B3C5D", margin: "0 0 20px" },
+  tipsList: { display: "flex", flexDirection: "column", gap: "14px" },
+  tipItem: { display: "flex", alignItems: "flex-start", gap: "12px" },
+  tipNum: { width: "24px", height: "24px", borderRadius: "50%", background: "linear-gradient(135deg, #0B3C5D, #2980b9)", color: "#fff", fontSize: "12px", fontWeight: "700", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 },
+  tipText: { fontSize: "14px", color: "#4a5568", lineHeight: "1.6" },
+  footer: { background: "#0B3C5D", padding: "20px 24px", textAlign: "center", marginTop: "auto" },
+  footerText: { color: "rgba(255,255,255,0.6)", fontSize: "13px", margin: 0 },
 };
