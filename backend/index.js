@@ -22,7 +22,6 @@ const upload = multer({ storage: multer.memoryStorage() });
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// POST /api/employees — Admin creates employee
 app.post('/api/employees', upload.single('photo'), async (req, res) => {
   console.log('ENV CHECK:', {
     db: process.env.DATABASE_URL ? 'SET' : 'MISSING',
@@ -31,7 +30,7 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     frontend: process.env.FRONTEND_URL ? 'SET' : 'MISSING',
   });
   try {
-    const { passport_id, full_name, work_id } = req.body;
+    const { passport_id, full_name, work_id, work_type } = req.body;
 
     let photo_url = null;
     if (req.file) {
@@ -42,13 +41,10 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
         const formData = new URLSearchParams();
         formData.append('file', dataURI);
         formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET);
-    
+
         const response = await fetch(
           `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
-          {
-            method: 'POST',
-            body: formData
-          }
+          { method: 'POST', body: formData }
         );
 
         const data = await response.json();
@@ -66,9 +62,9 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
     }
 
     const result = await pool.query(
-      `INSERT INTO employees (passport_id, full_name, photo_url, work_id)
-       VALUES ($1, $2, $3, $4) RETURNING token`,
-      [passport_id, full_name, photo_url, work_id]
+      `INSERT INTO employees (passport_id, full_name, photo_url, work_id, work_type)
+       VALUES ($1, $2, $3, $4, $5) RETURNING token`,
+      [passport_id, full_name, photo_url, work_id, work_type]
     );
 
     const token = result.rows[0].token;
@@ -83,7 +79,6 @@ app.post('/api/employees', upload.single('photo'), async (req, res) => {
   }
 });
 
-// GET /api/employees/:token — User views their info
 app.get('/api/employees/:token', async (req, res) => {
   try {
     const { token } = req.params;
