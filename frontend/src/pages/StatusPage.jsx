@@ -11,7 +11,7 @@ export default function StatusPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PackLane Canada — Check Status";
+    document.title = "SkyNet Malta — Check Status";
   }, []);
 
   const handleCheckStatus = async () => {
@@ -40,8 +40,8 @@ export default function StatusPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PackLane Canada</span>
+            <img src="/images/sky.webp" alt="SkyNet Malta Logo" style={styles.navLogo} />
+            <span style={styles.navName}>SkyNet Malta</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -77,8 +77,8 @@ export default function StatusPage() {
               onChange={e => setPassportId(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleCheckStatus()}
               onFocus={e => {
-                e.target.style.borderColor = "#2980b9";
-                e.target.style.boxShadow = "0 0 0 3px rgba(41,128,185,0.15)";
+                e.target.style.borderColor = "#c0392b";
+                e.target.style.boxShadow = "0 0 0 3px rgba(192,57,43,0.15)";
               }}
               onBlur={e => {
                 e.target.style.borderColor = "#ddd";
@@ -102,8 +102,8 @@ export default function StatusPage() {
               opacity: loading ? 0.7 : 1,
               cursor: loading ? "not-allowed" : "pointer"
             }}
-            onMouseOver={e => { if (!loading) e.target.style.transform = "translateY(-2px)"; }}
-            onMouseOut={e => { e.target.style.transform = "translateY(0)"; }}
+            onMouseOver={e => { if (!loading) e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; }}
           >
             {loading ? "⏳ Checking..." : "Check Status →"}
           </button>
@@ -127,7 +127,7 @@ export default function StatusPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 SkyNet Malta. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
@@ -136,7 +136,7 @@ export default function StatusPage() {
 const styles = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f0f6ff",
+    backgroundColor: "#fff5f5",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     margin: 0,
     padding: 0,
@@ -144,9 +144,9 @@ const styles = {
     flexDirection: "column",
   },
   navBar: {
-    background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "0 24px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.3)",
+    boxShadow: "0 2px 12px rgba(120,0,0,0.35)",
   },
   navInner: {
     maxWidth: "1100px",
@@ -175,13 +175,13 @@ const styles = {
     fontSize: "18px",
   },
   navTag: {
-    color: "rgba(255,255,255,0.7)",
+    color: "rgba(255,255,255,0.75)",
     fontSize: "13px",
     fontWeight: "500",
   },
   hero: {
     position: "relative",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "72px 24px",
     display: "flex",
     alignItems: "center",
@@ -222,9 +222,10 @@ const styles = {
     fontWeight: "800",
     margin: "0 0 16px",
     lineHeight: "1.2",
+    textShadow: "0 2px 12px rgba(0,0,0,0.25)",
   },
   heroSub: {
-    color: "rgba(255,255,255,0.85)",
+    color: "rgba(255,255,255,0.88)",
     fontSize: "17px",
     lineHeight: "1.7",
     margin: 0,
@@ -240,8 +241,8 @@ const styles = {
     backgroundColor: "#fff",
     borderRadius: "24px",
     padding: "48px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "1px solid rgba(11,60,93,0.08)",
+    boxShadow: "0 8px 40px rgba(120,0,0,0.12)",
+    border: "1px solid rgba(192,57,43,0.1)",
     textAlign: "center",
     marginBottom: "32px",
   },
@@ -252,12 +253,12 @@ const styles = {
   formTitle: {
     fontSize: "26px",
     fontWeight: "800",
-    color: "#0B3C5D",
+    color: "#7a0000",
     margin: "0 0 12px",
   },
   formText: {
     fontSize: "15px",
-    color: "#4a5568",
+    color: "#4a3030",
     lineHeight: "1.7",
     marginBottom: "28px",
   },
@@ -269,7 +270,7 @@ const styles = {
     display: "block",
     fontWeight: "700",
     fontSize: "13px",
-    color: "#0B3C5D",
+    color: "#7a0000",
     marginBottom: "8px",
     textTransform: "uppercase",
     letterSpacing: "0.5px",
@@ -283,12 +284,12 @@ const styles = {
     outline: "none",
     transition: "all 0.3s",
     boxSizing: "border-box",
-    backgroundColor: "#f8faff",
-    color: "#0B3C5D",
+    backgroundColor: "#fff8f8",
+    color: "#7a0000",
   },
   errorBox: {
     backgroundColor: "#fff5f5",
-    border: "1px solid #fed7d7",
+    border: "1px solid #f5c4c4",
     borderRadius: "10px",
     padding: "12px 16px",
     color: "#c0392b",
@@ -305,10 +306,10 @@ const styles = {
     borderRadius: "12px",
     border: "none",
     cursor: "pointer",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     color: "#fff",
     transition: "all 0.3s",
-    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
+    boxShadow: "0 4px 15px rgba(120,0,0,0.3)",
     letterSpacing: "0.3px",
   },
   infoRow: {
@@ -324,19 +325,19 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "8px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.08)",
-    border: "1px solid rgba(11,60,93,0.06)",
+    boxShadow: "0 2px 12px rgba(120,0,0,0.08)",
+    border: "1px solid rgba(192,57,43,0.08)",
   },
   infoIcon: { fontSize: "28px" },
-  infoTitle: { color: "#0B3C5D", fontSize: "15px" },
-  infoText: { color: "#4a5568", fontSize: "13px", lineHeight: "1.5" },
+  infoTitle: { color: "#7a0000", fontSize: "15px" },
+  infoText: { color: "#4a3030", fontSize: "13px", lineHeight: "1.5" },
   footer: {
-    background: "#0B3C5D",
+    background: "#7a0000",
     padding: "20px 24px",
     textAlign: "center",
   },
   footerText: {
-    color: "rgba(255,255,255,0.6)",
+    color: "rgba(255,255,255,0.65)",
     fontSize: "13px",
     margin: 0,
   },

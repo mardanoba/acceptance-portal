@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/packlane.jpg";
+import logo from "../assets/sky.webp";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -10,7 +10,7 @@ export default function WorkIDPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PackLane Canada — Digital ID";
+    document.title = "SkyNet Malta — Digital ID";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -19,16 +19,16 @@ export default function WorkIDPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/sky.webp" alt="SkyNet Malta" style={styles.navLogo} /><span style={styles.navName}>SkyNet Malta</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
+        <p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p>
       </div>
     </div>
   );
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/sky.webp" alt="SkyNet Malta" style={styles.navLogo} /><span style={styles.navName}>SkyNet Malta</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p>Loading Digital ID...</p>
       </div>
@@ -41,8 +41,8 @@ export default function WorkIDPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PackLane Canada</span>
+            <img src="/images/skylogo.webp" alt="SkyNet Malta Logo" style={styles.navLogo} />
+            <span style={styles.navName}>SkyNet Malta</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -54,7 +54,7 @@ export default function WorkIDPage() {
         <div style={styles.heroContent}>
           <div style={styles.heroBadge}>🪪 Official Document</div>
           <h1 style={styles.heroTitle}>Digital Work ID</h1>
-          <p style={styles.heroSub}>Your official PackLane Canada employee identification card</p>
+          <p style={styles.heroSub}>Your official SkyNet Malta employee identification card</p>
         </div>
       </div>
 
@@ -65,9 +65,9 @@ export default function WorkIDPage() {
         <div style={styles.idCard}>
           {/* CARD HEADER */}
           <div style={styles.cardHeader}>
-            <img src={logo} alt="PackLane Logo" style={styles.cardLogo} />
+            <img src={logo} alt="SkyNet Malta Logo" style={styles.cardLogo} />
             <div style={styles.cardHeaderText}>
-              <h2 style={{ margin: 0, fontSize: "20px", fontWeight: "800" }}>PackLane Canada</h2>
+              <h2 style={{ margin: 0, fontSize: "20px", fontWeight: "800" }}>SkyNet Malta</h2>
               <p style={{ margin: 0, fontSize: "13px", opacity: 0.85 }}>Official Employee Digital ID</p>
             </div>
             <div style={styles.cardBadge}>ACTIVE</div>
@@ -91,10 +91,10 @@ export default function WorkIDPage() {
             <div style={styles.details}>
               {[
                 { label: "Full Name", value: employee.full_name },
-{ label: "Passport ID", value: employee.passport_id },
-{ label: "Work ID", value: employee.work_id },
-{ label: "Work Type", value: employee.work_type },
-{ label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
+                { label: "Passport ID", value: employee.passport_id },
+                { label: "Work ID", value: employee.work_id },
+                { label: "Work Type", value: employee.work_type },
+                { label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
               ].map((item, i) => (
                 <div key={i} style={styles.detailItem}>
                   <span style={styles.detailLabel}>{item.label}</span>
@@ -107,7 +107,7 @@ export default function WorkIDPage() {
 
           {/* CARD FOOTER */}
           <div style={styles.cardFooter}>
-            This card is the property of PackLane Canada. If found, please return to the company office.
+            This card is the property of SkyNet Malta. If found, please return to the company office.
           </div>
         </div>
 
@@ -116,12 +116,12 @@ export default function WorkIDPage() {
           <button
             style={styles.printBtn}
             onMouseOver={e => {
-              e.target.style.transform = "translateY(-2px)";
-              e.target.style.boxShadow = "0 8px 30px rgba(11,60,93,0.4)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 8px 30px rgba(120,0,0,0.4)";
             }}
             onMouseOut={e => {
-              e.target.style.transform = "translateY(0)";
-              e.target.style.boxShadow = "0 4px 15px rgba(11,60,93,0.3)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 15px rgba(120,0,0,0.3)";
             }}
             onClick={() => window.print()}
           >
@@ -133,7 +133,7 @@ export default function WorkIDPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 SkyNet Malta. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
@@ -142,7 +142,7 @@ export default function WorkIDPage() {
 const styles = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f0f6ff",
+    backgroundColor: "#fff5f5",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     margin: 0,
     padding: 0,
@@ -150,9 +150,9 @@ const styles = {
     flexDirection: "column",
   },
   navBar: {
-    background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "0 24px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.3)",
+    boxShadow: "0 2px 12px rgba(120,0,0,0.35)",
   },
   navInner: {
     maxWidth: "1100px",
@@ -181,12 +181,12 @@ const styles = {
     fontSize: "18px",
   },
   navTag: {
-    color: "rgba(255,255,255,0.7)",
+    color: "rgba(255,255,255,0.75)",
     fontSize: "13px",
   },
   hero: {
     position: "relative",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "60px 24px",
     display: "flex",
     alignItems: "center",
@@ -226,9 +226,10 @@ const styles = {
     fontSize: "44px",
     fontWeight: "800",
     margin: "0 0 12px",
+    textShadow: "0 2px 12px rgba(0,0,0,0.25)",
   },
   heroSub: {
-    color: "rgba(255,255,255,0.85)",
+    color: "rgba(255,255,255,0.88)",
     fontSize: "16px",
     margin: 0,
   },
@@ -243,12 +244,12 @@ const styles = {
     backgroundColor: "#fff",
     borderRadius: "24px",
     overflow: "hidden",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.15)",
-    border: "1px solid rgba(11,60,93,0.1)",
+    boxShadow: "0 8px 40px rgba(120,0,0,0.15)",
+    border: "1px solid rgba(192,57,43,0.12)",
     marginBottom: "24px",
   },
   cardHeader: {
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     color: "#fff",
     display: "flex",
     alignItems: "center",
@@ -296,21 +297,21 @@ const styles = {
     height: "200px",
     objectFit: "cover",
     borderRadius: "12px",
-    border: "4px solid #0B3C5D",
-    boxShadow: "0 4px 20px rgba(11,60,93,0.2)",
+    border: "4px solid #7a0000",
+    boxShadow: "0 4px 20px rgba(120,0,0,0.2)",
   },
   photoPlaceholder: {
     width: "160px",
     height: "200px",
     borderRadius: "12px",
-    border: "4px solid #0B3C5D",
-    backgroundColor: "#f0f6ff",
+    border: "4px solid #7a0000",
+    backgroundColor: "#fff8f8",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   photoLabel: {
-    background: "linear-gradient(135deg, #0B3C5D, #2980b9)",
+    background: "linear-gradient(135deg, #7a0000, #c0392b)",
     color: "#fff",
     padding: "4px 16px",
     borderRadius: "999px",
@@ -331,39 +332,39 @@ const styles = {
     flexDirection: "column",
     gap: "3px",
     padding: "12px 0",
-    borderBottom: "1px solid rgba(11,60,93,0.08)",
+    borderBottom: "1px solid rgba(192,57,43,0.08)",
   },
   detailLabel: {
     fontSize: "11px",
     fontWeight: "700",
-    color: "#2980b9",
+    color: "#c0392b",
     textTransform: "uppercase",
     letterSpacing: "1px",
   },
   detailValue: {
     fontSize: "17px",
-    color: "#0B3C5D",
+    color: "#7a0000",
     fontWeight: "600",
   },
   verifiedBadge: {
     display: "inline-block",
-    background: "linear-gradient(135deg, #0B3C5D, #2980b9)",
+    background: "linear-gradient(135deg, #7a0000, #c0392b)",
     color: "#fff",
     padding: "8px 20px",
     borderRadius: "999px",
     fontWeight: "700",
     fontSize: "13px",
     marginTop: "12px",
-    boxShadow: "0 4px 12px rgba(11,60,93,0.3)",
+    boxShadow: "0 4px 12px rgba(120,0,0,0.3)",
     alignSelf: "flex-start",
   },
   cardFooter: {
-    borderTop: "1px solid rgba(11,60,93,0.08)",
+    borderTop: "1px solid rgba(192,57,43,0.08)",
     padding: "16px 28px",
     fontSize: "13px",
-    color: "#4a5568",
+    color: "#4a3030",
     textAlign: "center",
-    backgroundColor: "#f8faff",
+    backgroundColor: "#fff8f8",
   },
   btnRow: {
     display: "flex",
@@ -376,19 +377,19 @@ const styles = {
     borderRadius: "12px",
     border: "none",
     cursor: "pointer",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     color: "#fff",
     transition: "all 0.3s",
-    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
+    boxShadow: "0 4px 15px rgba(120,0,0,0.3)",
   },
   footer: {
-    background: "#0B3C5D",
+    background: "#7a0000",
     padding: "20px 24px",
     textAlign: "center",
     marginTop: "auto",
   },
   footerText: {
-    color: "rgba(255,255,255,0.6)",
+    color: "rgba(255,255,255,0.65)",
     fontSize: "13px",
     margin: 0,
   },

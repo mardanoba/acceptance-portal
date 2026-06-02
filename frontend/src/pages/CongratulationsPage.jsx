@@ -10,7 +10,7 @@ export default function CongratulationsPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PackLane Canada — Congratulations";
+    document.title = "SkyNet Malta — Congratulations";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -19,14 +19,14 @@ export default function CongratulationsPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/sky.webp" alt="SkyNet Malta" style={styles.navLogo} /><span style={styles.navName}>SkyNet Malta</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p></div></div>
     </div>
   );
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/sky.webp" alt="SkyNet Malta" style={styles.navLogo} /><span style={styles.navName}>SkyNet Malta</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p>Loading...</p></div></div>
     </div>
   );
@@ -37,8 +37,8 @@ export default function CongratulationsPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PackLane Canada</span>
+            <img src="/images/sky.webp" alt="SkyNet Malta Logo" style={styles.navLogo} />
+            <span style={styles.navName}>SkyNet Malta</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -51,7 +51,7 @@ export default function CongratulationsPage() {
           <div style={styles.heroBadge}>🎉 Accepted Employee</div>
           <h1 style={styles.heroTitle}>Congratulations,<br />{employee.full_name}!</h1>
           <p style={styles.heroSub}>
-            You have officially been accepted to PackLane Canada. You have now completed 50% of your application process Welcome to the team!
+            You have officially been accepted to SkyNet Malta. You have now completed 50% of your application process. Welcome to the team!
           </p>
         </div>
       </div>
@@ -72,11 +72,11 @@ export default function CongratulationsPage() {
           {/* DETAILS */}
           <div style={styles.detailBox}>
             {[
-             { label: "Full Name", value: employee.full_name },
-{ label: "Passport ID", value: employee.passport_id },
-{ label: "Work ID", value: employee.work_id },
-{ label: "Work Type", value: employee.work_type },
-{ label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
+              { label: "Full Name", value: employee.full_name },
+              { label: "Passport ID", value: employee.passport_id },
+              { label: "Work ID", value: employee.work_id },
+              { label: "Work Type", value: employee.work_type },
+              { label: "Member Since", value: new Date(employee.created_at).toLocaleDateString() },
             ].map((item, i) => (
               <div key={i} style={styles.detailRow}>
                 <span style={styles.detailLabel}>{item.label}</span>
@@ -88,12 +88,12 @@ export default function CongratulationsPage() {
           <button
             style={styles.button}
             onMouseOver={e => {
-              e.target.style.transform = "translateY(-2px)";
-              e.target.style.boxShadow = "0 8px 30px rgba(11,60,93,0.4)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 8px 30px rgba(120,0,0,0.4)";
             }}
             onMouseOut={e => {
-              e.target.style.transform = "translateY(0)";
-              e.target.style.boxShadow = "0 4px 15px rgba(11,60,93,0.3)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 15px rgba(120,0,0,0.3)";
             }}
             onClick={() => navigate(`/work-id/${token}`)}
           >
@@ -105,7 +105,7 @@ export default function CongratulationsPage() {
         <div style={styles.bottomRow}>
           {[
             { icon: "🏢", title: "Great Workplace", text: "Join a team of passionate professionals" },
-            { icon: "📦", title: "Industry Leader", text: "World-class packaging solutions" },
+            { icon: "📦", title: "Industry Leader", text: "World-class delivery solutions" },
             { icon: "🚀", title: "Growth", text: "Endless opportunities to grow your career" },
           ].map((item, i) => (
             <div key={i} style={styles.bottomCard}>
@@ -119,7 +119,7 @@ export default function CongratulationsPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 SkyNet Malta. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
@@ -128,7 +128,7 @@ export default function CongratulationsPage() {
 const styles = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f0f6ff",
+    backgroundColor: "#fff5f5",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     margin: 0,
     padding: 0,
@@ -136,9 +136,9 @@ const styles = {
     flexDirection: "column",
   },
   navBar: {
-    background: "linear-gradient(135deg, #0B3C5D 0%, #1a6fa8 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "0 24px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.3)",
+    boxShadow: "0 2px 12px rgba(120,0,0,0.35)",
   },
   navInner: {
     maxWidth: "1100px",
@@ -167,12 +167,12 @@ const styles = {
     fontSize: "18px",
   },
   navTag: {
-    color: "rgba(255,255,255,0.7)",
+    color: "rgba(255,255,255,0.75)",
     fontSize: "13px",
   },
   hero: {
     position: "relative",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     padding: "72px 24px",
     display: "flex",
     alignItems: "center",
@@ -213,9 +213,10 @@ const styles = {
     fontWeight: "800",
     margin: "0 0 16px",
     lineHeight: "1.2",
+    textShadow: "0 2px 12px rgba(0,0,0,0.25)",
   },
   heroSub: {
-    color: "rgba(255,255,255,0.85)",
+    color: "rgba(255,255,255,0.88)",
     fontSize: "17px",
     lineHeight: "1.7",
     margin: 0,
@@ -231,8 +232,8 @@ const styles = {
     backgroundColor: "#fff",
     borderRadius: "24px",
     padding: "48px",
-    boxShadow: "0 8px 40px rgba(11,60,93,0.12)",
-    border: "1px solid rgba(11,60,93,0.08)",
+    boxShadow: "0 8px 40px rgba(120,0,0,0.12)",
+    border: "1px solid rgba(192,57,43,0.1)",
     textAlign: "center",
     marginBottom: "32px",
   },
@@ -241,17 +242,17 @@ const styles = {
     height: "140px",
     borderRadius: "50%",
     objectFit: "cover",
-    border: "5px solid #0B3C5D",
+    border: "5px solid #7a0000",
     margin: "0 auto 20px",
     display: "block",
-    boxShadow: "0 4px 20px rgba(11,60,93,0.2)",
+    boxShadow: "0 4px 20px rgba(120,0,0,0.2)",
   },
   photoPlaceholder: {
     width: "140px",
     height: "140px",
     borderRadius: "50%",
-    backgroundColor: "#f0f6ff",
-    border: "5px solid #0B3C5D",
+    backgroundColor: "#fff8f8",
+    border: "5px solid #7a0000",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -260,21 +261,21 @@ const styles = {
   },
   acceptedBadge: {
     display: "inline-block",
-    background: "linear-gradient(135deg, #0B3C5D, #2980b9)",
+    background: "linear-gradient(135deg, #7a0000, #c0392b)",
     color: "#fff",
     padding: "8px 24px",
     borderRadius: "999px",
     fontWeight: "700",
     fontSize: "14px",
     marginBottom: "28px",
-    boxShadow: "0 4px 12px rgba(11,60,93,0.3)",
+    boxShadow: "0 4px 12px rgba(120,0,0,0.3)",
   },
   detailBox: {
-    backgroundColor: "#f8faff",
+    backgroundColor: "#fff8f8",
     borderRadius: "16px",
     overflow: "hidden",
     marginBottom: "28px",
-    border: "1px solid rgba(11,60,93,0.08)",
+    border: "1px solid rgba(192,57,43,0.1)",
     textAlign: "left",
   },
   detailRow: {
@@ -282,17 +283,17 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "16px 24px",
-    borderBottom: "1px solid rgba(11,60,93,0.06)",
+    borderBottom: "1px solid rgba(192,57,43,0.06)",
   },
   detailLabel: {
     fontWeight: "700",
-    color: "#0B3C5D",
+    color: "#7a0000",
     fontSize: "13px",
     textTransform: "uppercase",
     letterSpacing: "0.5px",
   },
   detailValue: {
-    color: "#2c3e50",
+    color: "#4a3030",
     fontWeight: "500",
     fontSize: "15px",
   },
@@ -304,10 +305,10 @@ const styles = {
     borderRadius: "12px",
     border: "none",
     cursor: "pointer",
-    background: "linear-gradient(135deg, #0B3C5D 0%, #2980b9 100%)",
+    background: "linear-gradient(135deg, #7a0000 0%, #c0392b 100%)",
     color: "#fff",
     transition: "all 0.3s",
-    boxShadow: "0 4px 15px rgba(11,60,93,0.3)",
+    boxShadow: "0 4px 15px rgba(120,0,0,0.3)",
   },
   bottomRow: {
     display: "grid",
@@ -322,19 +323,19 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "8px",
-    boxShadow: "0 2px 12px rgba(11,60,93,0.08)",
-    border: "1px solid rgba(11,60,93,0.06)",
+    boxShadow: "0 2px 12px rgba(120,0,0,0.08)",
+    border: "1px solid rgba(192,57,43,0.08)",
   },
   bottomIcon: { fontSize: "28px" },
-  bottomTitle: { color: "#0B3C5D", fontSize: "15px" },
-  bottomText: { color: "#4a5568", fontSize: "13px", lineHeight: "1.5" },
+  bottomTitle: { color: "#7a0000", fontSize: "15px" },
+  bottomText: { color: "#4a3030", fontSize: "13px", lineHeight: "1.5" },
   footer: {
-    background: "#0B3C5D",
+    background: "#7a0000",
     padding: "20px 24px",
     textAlign: "center",
   },
   footerText: {
-    color: "rgba(255,255,255,0.6)",
+    color: "rgba(255,255,255,0.65)",
     fontSize: "13px",
     margin: 0,
   },
