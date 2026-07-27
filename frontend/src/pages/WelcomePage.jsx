@@ -54,7 +54,7 @@ export default function WelcomePage() {
         {/* STATS ROW */}
         <div style={styles.statsRow}>
           {[
-            { num: "2015", label: "Founded" },
+            { num: "2006", label: "Founded" },
             { num: "50K+", label: "Happy Clients" },
             { num: "100+", label: "Box Styles" },
             { num: "TR", label: "Based in Turkey" },
