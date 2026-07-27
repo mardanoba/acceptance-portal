@@ -6,7 +6,7 @@ export default function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "PackLane Canada — Welcome";
+    document.title = "za packaging Turkey — Welcome";
   }, []);
 
   return (
@@ -15,8 +15,8 @@ export default function WelcomePage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PackLane Canada</span>
+            <img src="/images/ZA.webp" alt="PackLane Logo" style={styles.navLogo} />
+            <span style={styles.navName}>ZA packaging Turkey</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -25,9 +25,9 @@ export default function WelcomePage() {
       {/* HERO SECTION */}
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <img src="/images/packlane.jpg" alt="PackLane" style={styles.heroImg} />
+        <img src="/images/ZA.webp" alt="za" style={styles.heroImg} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Welcome to<br />PackLane Canada</h1>
+          <h1 style={styles.heroTitle}>Welcome to<br />za packaging</h1>
           <p style={styles.heroSub}>
             Your official employee acceptance portal. Check your status and access your digital work ID.
           </p>
@@ -69,14 +69,14 @@ export default function WelcomePage() {
         {/* ABOUT */}
         <div style={styles.section}>
           <div style={styles.sectionLabel}>WHO WE ARE</div>
-          <h2 style={styles.sectionTitle}>About PackLane</h2>
+          <h2 style={styles.sectionTitle}>About za packaging</h2>
           <p style={styles.text}>
-            Packlane is a custom packaging company based in Canada, founded in 2015.
-            They offer a range of services for creating custom printed boxes, including
+            za packaging is a custom packaging company based in Turkey, founded in 2006.
+            we offer a range of services for creating custom printed boxes, including
             mailers, shipping boxes, and product boxes, with options for various materials
-            and sizes. Packlane provides a user-friendly online platform for ordering and
+            and sizes. za packaging provides a user-friendly online platform for ordering and
             designing packaging, allowing customers to visualize their designs in 3D and
-            receive instant quotes. They have a strong reputation in the industry, working
+            receive instant quotes. we have a strong reputation in the industry, working
             with numerous brands and offering low minimum order quantities and fast
             turnaround times.
           </p>
@@ -85,7 +85,7 @@ export default function WelcomePage() {
         {/* MISSION & VISION CARDS */}
         <div style={styles.cardsRow}>
           <div style={styles.card}>
-            <img src="/images/packlane2.png" alt="Mission" style={styles.cardImg} />
+            <img src="/images/ZA1.webp" alt="Mission" style={styles.cardImg} />
             <div style={styles.cardBody}>
               <div style={styles.cardIcon}>🎯</div>
               <h3 style={styles.cardTitle}>Our Mission</h3>
@@ -98,7 +98,7 @@ export default function WelcomePage() {
             </div>
           </div>
           <div style={styles.card}>
-            <img src="/images/packlane3.jpg" alt="Vision" style={styles.cardImg} />
+            <img src="/images/ZA2.webp" alt="Vision" style={styles.cardImg} />
             <div style={styles.cardBody}>
               <div style={styles.cardIcon}>🌟</div>
               <h3 style={styles.cardTitle}>Our Vision</h3>
@@ -140,7 +140,7 @@ export default function WelcomePage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 za packaging. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
