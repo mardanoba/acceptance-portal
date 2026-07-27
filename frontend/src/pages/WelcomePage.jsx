@@ -57,7 +57,7 @@ export default function WelcomePage() {
             { num: "2015", label: "Founded" },
             { num: "50K+", label: "Happy Clients" },
             { num: "100+", label: "Box Styles" },
-            { num: "🇨🇦", label: "Based in Canada" },
+            { num: "TR", label: "Based in Turkey" },
           ].map((s, i) => (
             <div key={i} style={styles.statCard}>
               <span style={styles.statNum}>{s.num}</span>
