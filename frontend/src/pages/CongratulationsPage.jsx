@@ -10,7 +10,7 @@ export default function CongratulationsPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "za packaging — Congratulations";
+    document.title = "PackLane Canada — Congratulations";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -19,14 +19,14 @@ export default function CongratulationsPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/ZA.webp" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>za packaging</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p></div></div>
     </div>
   );
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/ZA.webp" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>za packaging</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p>Loading...</p></div></div>
     </div>
   );
@@ -37,8 +37,8 @@ export default function CongratulationsPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/ZA.webp" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>za packaging</span>
+            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
+            <span style={styles.navName}>PackLane Canada</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -51,7 +51,7 @@ export default function CongratulationsPage() {
           <div style={styles.heroBadge}>🎉 Accepted Employee</div>
           <h1 style={styles.heroTitle}>Congratulations,<br />{employee.full_name}!</h1>
           <p style={styles.heroSub}>
-            You have officially been accepted to za packaging. You have now completed 50% of your application process Welcome to the team!
+            You have officially been accepted to PackLane Canada. You have now completed 50% of your application process Welcome to the team!
           </p>
         </div>
       </div>
@@ -119,7 +119,7 @@ export default function CongratulationsPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 za packaging. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/ZA.webp";
+import logo from "../assets/packlane.jpg";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -10,7 +10,7 @@ export default function WorkIDPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "za packaging — Digital ID";
+    document.title = "PackLane Canada — Digital ID";
     fetch(`${API}/api/employees/${token}`)
       .then(res => { if (!res.ok) throw new Error("Not found"); return res.json(); })
       .then(data => setEmployee(data))
@@ -19,7 +19,7 @@ export default function WorkIDPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/ZA.webp" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>za packaging</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
       </div>
@@ -28,7 +28,7 @@ export default function WorkIDPage() {
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/ZA.webp" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>za packaging</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/packlane.jpg" alt="PackLane" style={styles.navLogo} /><span style={styles.navName}>PackLane Canada</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p>Loading Digital ID...</p>
       </div>
@@ -41,8 +41,8 @@ export default function WorkIDPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/ZA.webp" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>za packaging</span>
+            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
+            <span style={styles.navName}>PackLane Canada</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -52,9 +52,9 @@ export default function WorkIDPage() {
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <div style={styles.heroBadge}>🪪 Official Document</div>
+          <div style={styles.heroBadge}>Official Document</div>
           <h1 style={styles.heroTitle}>Digital Work ID</h1>
-          <p style={styles.heroSub}>Your official za packaging employee identification card</p>
+          <p style={styles.heroSub}>Your official PackLane Canada employee identification card</p>
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export default function WorkIDPage() {
           <div style={styles.cardHeader}>
             <img src={logo} alt="PackLane Logo" style={styles.cardLogo} />
             <div style={styles.cardHeaderText}>
-              <h2 style={{ margin: 0, fontSize: "20px", fontWeight: "800" }}>za packging</h2>
+              <h2 style={{ margin: 0, fontSize: "20px", fontWeight: "800" }}>PackLane Canada</h2>
               <p style={{ margin: 0, fontSize: "13px", opacity: 0.85 }}>Official Employee Digital ID</p>
             </div>
             <div style={styles.cardBadge}>ACTIVE</div>
@@ -107,7 +107,7 @@ export default function WorkIDPage() {
 
           {/* CARD FOOTER */}
           <div style={styles.cardFooter}>
-            This card is the property of za packaging. If found, please return to the company office.
+            This card is the property of PackLane Canada. If found, please return to the company office.
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export default function WorkIDPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 za packaging. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
