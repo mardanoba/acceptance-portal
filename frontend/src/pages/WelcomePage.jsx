@@ -98,7 +98,7 @@ export default function WelcomePage() {
             </div>
           </div>
           <div style={styles.card}>
-            <img src="/images/pjr2git.webp" alt="Vision" style={styles.cardImg} />
+            <img src="/images/pjr2.webp" alt="Vision" style={styles.cardImg} />
             <div style={styles.cardBody}>
               <div style={styles.cardIcon}>🌟</div>
               <h3 style={styles.cardTitle}>Our Vision</h3>
