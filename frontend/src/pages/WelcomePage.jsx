@@ -71,7 +71,7 @@ export default function WelcomePage() {
           <div style={styles.sectionLabel}>WHO WE ARE</div>
           <h2 style={styles.sectionTitle}>About PJR Group</h2>
           <p style={styles.text}>
-           PJR Group is a custom packaging company based in <Kuwait>Kuwait</Kuwait>, founded in 2015.
+           PJR Group is a custom packaging company based in Kuwait, founded in 2015.
             We offer a range of services for creating custom printed boxes, including
             mailers, shipping boxes, and product boxes, with options for various materials
             and sizes. PJR Group provides a user-friendly online platform for ordering and
