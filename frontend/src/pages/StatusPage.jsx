@@ -11,7 +11,7 @@ export default function StatusPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PackLane Canada — Check Status";
+    document.title = "PJR Group — Check Status";
   }, []);
 
   const handleCheckStatus = async () => {
@@ -40,8 +40,8 @@ export default function StatusPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/packlane.jpg" alt="PackLane Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PackLane Canada</span>
+            <img src="/images/pjr.png" alt="PJR Group Logo" style={styles.navLogo} />
+            <span style={styles.navName}>PJR Group</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -127,7 +127,7 @@ export default function StatusPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PackLane Canada. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 PJR Group. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
