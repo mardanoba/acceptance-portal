@@ -15,7 +15,7 @@ export default function WelcomePage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pjr.png" alt="PJR Group Logo" style={styles.navLogo} />
+            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
             <span style={styles.navName}>PJR Group</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
@@ -25,7 +25,7 @@ export default function WelcomePage() {
       {/* HERO SECTION */}
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <img src="/images/pjr.png" alt="PJR Group" style={styles.heroImg} />
+        <img src="/images/pgr.png" alt="PJR Group" style={styles.heroImg} />
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>Welcome to<br />PJR Group</h1>
           <p style={styles.heroSub}>

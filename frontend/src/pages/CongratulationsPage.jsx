@@ -19,14 +19,14 @@ export default function CongratulationsPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pjr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pgr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p style={{ color: "#c0392b", fontWeight: "bold" }}>{error}</p></div></div>
     </div>
   );
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pjr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pgr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
       <div style={styles.main}><div style={styles.card}><p>Loading...</p></div></div>
     </div>
   );
@@ -37,7 +37,7 @@ export default function CongratulationsPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pjr.png" alt="PJR Group Logo" style={styles.navLogo} />
+            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
             <span style={styles.navName}>PJR Group</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>

@@ -40,7 +40,7 @@ export default function StatusPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pjr.png" alt="PJR Group Logo" style={styles.navLogo} />
+            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
             <span style={styles.navName}>PJR Group</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>

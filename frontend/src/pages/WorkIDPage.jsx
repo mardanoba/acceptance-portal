@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import logo from "../assets/pjr.png";
+import logo from "../assets/pgr.png";
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
@@ -19,7 +19,7 @@ export default function WorkIDPage() {
 
   if (error) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pjr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pgr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
       </div>
@@ -28,7 +28,7 @@ export default function WorkIDPage() {
 
   if (!employee) return (
     <div style={styles.page}>
-      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pjr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
+      <div style={styles.navBar}><div style={styles.navInner}><div style={styles.navBrand}><img src="/images/pgr.png" alt="PJR Group" style={styles.navLogo} /><span style={styles.navName}>PJR Group</span></div></div></div>
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <p>Loading Digital ID...</p>
       </div>
@@ -41,7 +41,7 @@ export default function WorkIDPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pjr.png" alt="PJR Group Logo" style={styles.navLogo} />
+            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
             <span style={styles.navName}>PJR Group</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
