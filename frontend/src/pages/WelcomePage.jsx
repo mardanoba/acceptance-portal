@@ -6,7 +6,7 @@ export default function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "PJR Group — Welcome";
+    document.title = "LNK Industries — Welcome";
   }, []);
 
   return (
@@ -15,8 +15,8 @@ export default function WelcomePage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PJR Group</span>
+            <img src="/images/lnk.webp" alt="LNK Industries Logo" style={styles.navLogo} />
+            <span style={styles.navName}>LNK Industries</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -25,9 +25,9 @@ export default function WelcomePage() {
       {/* HERO SECTION */}
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <img src="/images/pgr.png" alt="PJR Group" style={styles.heroImg} />
+        <img src="/images/lnk.webp" alt="LNK Industries" style={styles.heroImg} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Welcome to<br />PJR Group</h1>
+          <h1 style={styles.heroTitle}>Welcome to<br />LNK Industries</h1>
           <p style={styles.heroSub}>
             Your official employee acceptance portal. Check your status and access your digital work ID.
           </p>
@@ -57,7 +57,7 @@ export default function WelcomePage() {
             { num: "2015", label: "Founded" },
             { num: "50K+", label: "Happy Clients" },
             { num: "100+", label: "Box Styles" },
-            { num: "KW", label: "Based in Kuwait" },
+            { num: "KW", label: "Based in Lativia" },
           ].map((s, i) => (
             <div key={i} style={styles.statCard}>
               <span style={styles.statNum}>{s.num}</span>
@@ -69,43 +69,31 @@ export default function WelcomePage() {
         {/* ABOUT */}
         <div style={styles.section}>
           <div style={styles.sectionLabel}>WHO WE ARE</div>
-          <h2 style={styles.sectionTitle}>About PJR Group</h2>
+          <h2 style={styles.sectionTitle}>About LNK Industries</h2>
           <p style={styles.text}>
-           PJR Group is a custom packaging company based in Kuwait, founded in 2015.
-            We offer a range of services for creating custom printed boxes, including
-            mailers, shipping boxes, and product boxes, with options for various materials
-            and sizes. PJR Group provides a user-friendly online platform for ordering and
-            designing packaging, allowing customers to visualize their designs in 3D and
-            receive instant quotes. They have a strong reputation in the industry, working
-            with numerous brands and offering low minimum order quantities and fast
-            turnaround times.
+          LNK Industries is a 10-year-old brand built on a 30-year-long legacy. We are proud to be at the forefront of modern infrastructure construction, large-scale industrial and commercial, as well as unique residential and maritime construction projects in our native Baltic region.
           </p>
         </div>
 
         {/* MISSION & VISION CARDS */}
         <div style={styles.cardsRow}>
           <div style={styles.card}>
-            <img src="/images/pjr1.webp" alt="Mission" style={styles.cardImg} />
+            <img src="/images/lnk1.webp" alt="Mission" style={styles.cardImg} />
             <div style={styles.cardBody}>
               <div style={styles.cardIcon}>🎯</div>
               <h3 style={styles.cardTitle}>Our Mission</h3>
               <p style={styles.cardText}>
-                To develop and produce a diversified portfolio of packaging products,
-                technically lead the industry, continuously improve production quality,
-                and increase clients' satisfaction through optimal utilization of
-                the company's resources.
+                We ensure the continuous growth of our company and our team of over 100 highly skilled professionals. We practice values-based innovative construction. We strive to always be better, incessantly deepening our understanding of engineering excellence — these are the principles that we bring to work with us every day.
               </p>
             </div>
           </div>
           <div style={styles.card}>
-            <img src="/images/pjr2.webp" alt="Vision" style={styles.cardImg} />
+            <img src="/images/lnk2.webp" alt="Vision" style={styles.cardImg} />
             <div style={styles.cardBody}>
               <div style={styles.cardIcon}>🌟</div>
               <h3 style={styles.cardTitle}>Our Vision</h3>
               <p style={styles.cardText}>
-                To become a leading world class organization and strengthen our position
-                as a leading company in the packaging business, maintaining the highest
-                quality standards ensuring our valuable clients' satisfaction.
+                We are bringing new ways of learning, working and travelling to people living in the Baltics, and we welcome queries from construction professionals interested in joining our path to innovation. We seek the passionate builders of the future. 
               </p>
             </div>
           </div>
@@ -140,7 +128,7 @@ export default function WelcomePage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PJR Group. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 LNK Industries. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );

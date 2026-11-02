@@ -11,7 +11,7 @@ export default function StatusPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "PJR Group — Check Status";
+    document.title = "LNK Industries — Check Status";
   }, []);
 
   const handleCheckStatus = async () => {
@@ -40,8 +40,8 @@ export default function StatusPage() {
       <div style={styles.navBar}>
         <div style={styles.navInner}>
           <div style={styles.navBrand}>
-            <img src="/images/pgr.png" alt="PJR Group Logo" style={styles.navLogo} />
-            <span style={styles.navName}>PJR Group</span>
+            <img src="/images/lnk.webp" alt="LNK Industries" style={styles.navLogo} />
+            <span style={styles.navName}>LNK Industries</span>
           </div>
           <span style={styles.navTag}>Employee Acceptance Portal</span>
         </div>
@@ -127,7 +127,7 @@ export default function StatusPage() {
 
       {/* FOOTER */}
       <div style={styles.footer}>
-        <p style={styles.footerText}>© 2026 PJR Group. All rights reserved. Employee Acceptance Portal.</p>
+        <p style={styles.footerText}>© 2026 LNK Industries. All rights reserved. Employee Acceptance Portal.</p>
       </div>
     </div>
   );
