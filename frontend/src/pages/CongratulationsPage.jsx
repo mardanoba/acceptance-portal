@@ -105,7 +105,7 @@ export default function CongratulationsPage() {
         <div style={styles.bottomRow}>
           {[
             { icon: "🏢", title: "Great Workplace", text: "Join a team of passionate professionals" },
-            { icon: "📦", title: "Industry Leader", text: "World-class packaging solutions" },
+            { icon: "📦", title: "Industry Leader", text: "World-class construction solutions" },
             { icon: "🚀", title: "Growth", text: "Endless opportunities to grow your career" },
           ].map((item, i) => (
             <div key={i} style={styles.bottomCard}>
